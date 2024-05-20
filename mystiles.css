@@ -1,0 +1,16 @@
+/*@@@@@@@ logo start @@@@@*/
+.logo {
+    height: 40px;
+    width: 100px;
+    overflow: hidden;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+.logo img {
+    height: 100%;
+    width: 100%;
+}
+
+/*@@@@@@@ logo ends @@@@@*/

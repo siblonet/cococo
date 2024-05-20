@@ -1,0 +1,18 @@
+[[redirects]]
+from = "/research"
+to = "/viewall.html"
+status = 200
+
+[[redirects]]
+from = "recherche*"
+to = "/research:splat"
+
+
+[[redirects]]
+from = "/viewdata"
+to = "/viewdetail.html"
+status = 200
+
+[[redirects]]
+from = "detail*"
+to = "/viewdata:splat"
