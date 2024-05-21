@@ -37,6 +37,7 @@
     <meta property="article:modified_time" content="2024-05-13T01:20:00Z" />
     <meta property="article:author" content="John Kokar" />
     <meta name="google-site-verification" content="HYoFJ7jQVWtEOkW_nPuQgPVSHSfDXlYy3bltFRXomis" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 
 
@@ -93,12 +94,12 @@
             </div>
             <div class="search-bar">
                 <i class="uil uil-search"></i>
-                <input type="search" placeholder="Search for creators, inspirations, and projects">
+                <input type="search" placeholder="Recherche Nounou, Ménagère, Vigile, Chauffeur ...">
             </div>
             <div class="create">
-                <label class="btn btn-primary" for="create-post">Créer Compte</label>
+                <label class="btn btn-primary" for="create-post">Compte</label>
                 <div class="profile-photo">
-                    <img id="profile-photo" src="" alt="load">
+                    <img id="profile-photo" src="assets/imo/avatay.png" alt="load">
                 </div>
             </div>
         </div>
@@ -111,10 +112,10 @@
             <div class="left">
                 <a class="profile">
                     <div class="profile-photo">
-                        <img id="profile-photoa" src="" alt="load">
+                        <img id="profile-photoa" src="assets/imo/avatay.png" alt="load">
                     </div>
                     <div class="handle">
-                        <h4 id="user_name" style="display: flex; column-gap: 2px;"></h4>
+                        <h4 id="user_name" style="display: flex; column-gap: 5px;"></h4>
                         <p class="text-muted" id="title_name"></p>
                     </div>
                 </a>
@@ -122,15 +123,23 @@
                 <!----------------- SIDEBAR -------------------->
                 <div class="sidebar">
                     <a class="menu-item active">
-                        <span><i class="uil uil-home"></i></span>
-                        <h3>Home</h3>
+                        <span>
+                            <i class="fa-solid fa-house"></i>
+                        </span>
+                        <h3>Acceuil</h3>
                     </a>
                     <a class="menu-item">
-                        <span><i class="uil uil-compass"></i></span>
+                        <span>
+                            <i class="uil uil-compass"></i>
+                        </span>
                         <h3>Explore</h3>
                     </a>
                     <a class="menu-item" id="notifications">
-                        <span><i class="uil uil-bell"><small class="notification-count">9+</small></i></span>
+                        <span>
+                            <i class="fa-regular fa-bell">
+                                <small class="notification-count">0</small>
+                            </i>
+                        </span>
                         <h3>Notification</h3>
                         <!--------------- NOTIFICATION POPUP --------------->
                         <div class="notifications-popup">
@@ -192,28 +201,32 @@
                         <!--------------- END NOTIFICATION POPUP --------------->
                     </a>
                     <a class="menu-item" id="messages-notifications">
-                        <span><i class="uil uil-envelope-alt"><small class="notification-count">6</small></i></span>
+                        <span>
+                            <i class="uil uil-envelope-alt">
+                                <small class="notification-count">0</small>
+                            </i>
+                        </span>
                         <h3>Messages</h3>
                     </a>
                     <a class="menu-item">
                         <span><i class="uil uil-bookmark"></i></span>
-                        <h3>Bookmarks</h3>
+                        <h3>Signets</h3>
                     </a>
                     <a class="menu-item">
                         <span><i class="uil uil-chart-line"></i></span>
-                        <h3>Analytics</h3>
+                        <h3>Analyses</h3>
                     </a>
                     <a class="menu-item" id="theme">
                         <span><i class="uil uil-palette"></i></span>
-                        <h3>Theme</h3>
+                        <h3>Thème</h3>
                     </a>
                     <a class="menu-item">
                         <span><i class="uil uil-setting"></i></span>
-                        <h3>Setting</h3>
+                        <h3>Paramètre</h3>
                     </a>
                 </div>
                 <!----------------- END OF SIDEBAR -------------------->
-                <label class="btn btn-primary" for="create-post">Create Post</label>
+                <label class="btn btn-primary" for="create-post">Créer Compte</label>
             </div>
 
             <!----------------- MIDDLE -------------------->
@@ -224,43 +237,43 @@
                         <div class="profile-photo">
                             <img src="./images/profile-8.jpg">
                         </div>
-                        <p class="name">Your Story</p>
+                        <p class="name">Present toi</p>
                     </div>
                     <div class="story">
                         <div class="profile-photo">
                             <img src="./images/profile-9.jpg">
                         </div>
-                        <p class="name">Lila James</p>
+                        <p class="name">Nounou</p>
                     </div>
                     <div class="story">
                         <div class="profile-photo">
                             <img src="./images/profile-10.jpg">
                         </div>
-                        <p class="name">Winnie Haley</p>
+                        <p class="name">Nounou</p>
                     </div>
                     <div class="story">
                         <div class="profile-photo">
                             <img src="./images/profile-11.jpg">
                         </div>
-                        <p class="name">Daniel Bale</p>
+                        <p class="name">Ménagère</p>
                     </div>
                     <div class="story">
                         <div class="profile-photo">
                             <img src="./images/profile-12.jpg">
                         </div>
-                        <p class="name">Jane Doe</p>
+                        <p class="name">Chauffeur</p>
                     </div>
                     <div class="story">
                         <div class="profile-photo">
                             <img src="./images/profile-13.jpg">
                         </div>
-                        <p class="name">Tina White</p>
+                        <p class="name">Esthéticienne</p>
                     </div>
                 </div>
                 <!----------------- END OF STORIES -------------------->
                 <form action="" class="create-post">
                     <div class="profile-photo">
-                        <img id="profile-photob" src="">
+                        <img id="profile-photob" src="assets/imo/avatay.png">
                     </div>
                     <input type="text" placeholder="C'est quoi le Gbèrè d'aujourd'hui ?" id="create-post">
                     <input type="submit" value="Post" class="btn btn-primary">
@@ -379,7 +392,7 @@
                                     <img src="./images/profile-4.jpg">
                                 </div>
                                 <div class="info">
-                                    <h3>Rosalinda Clark</h3>
+                                    <h3 style="display: flex; column-gap: 5px;">Rosalinda Clark <img  style="height: 12px; width: 12px; margin-top: 5px" src="assets/imo/verified.png"></h3>
                                     <small>New York, 50 Minutes Ago</small>
                                 </div>
                             </div>
@@ -592,7 +605,7 @@
                                     <img src="./images/profile-3.jpg">
                                 </div>
                                 <div class="info">
-                                    <h3>Indiana Ellison</h3>
+                                    <h3 style="display: flex; column-gap: 5px;">Indiana Ellison <img  style="height: 12px; width: 12px; margin-top: 5px" src="assets/imo/verify.png"></h3>
                                     <small>Qatar, 8 Hours Ago</small>
                                 </div>
                             </div>
@@ -652,21 +665,22 @@
                     <!------- SEARCH BAR ------->
                     <div class="search-bar">
                         <i class="uil uil-search"></i>
-                        <input type="search" placeholder="Search messages" id="message-search">
+                        <input type="search" placeholder="Rechercher des messages" id="message-search">
                     </div>
                     <!------- MESSAGES CATEGORY ------->
                     <div class="category">
-                        <h6 class="active">Primary</h6>
-                        <h6>General</h6>
-                        <h6 class="message-requests">Requests (7)</h6>
+                        <h6 class="active">Privé</h6>
+                        <h6>Général</h6>
+                        <h6 class="message-requests">Amitié (3)</h6>
                     </div>
+
                     <!------- MESSAGES ------->
                     <div class="message">
                         <div class="profile-photo">
                             <img src="./images/profile-17.jpg">
                         </div>
                         <div class="message-body">
-                            <h5>Edem Quist</h5>
+                            <h5 style="display: flex; column-gap: 5px;">Edem Quist <img  style="height: 12px; width: 12px; margin-top: 5px" src="assets/imo/verified.png"></h5>
                             <p class="text-muted">Just woke up bruh</p>
                         </div>
                     </div>
@@ -708,7 +722,7 @@
                             <div class="active"></div>
                         </div>
                         <div class="message-body">
-                            <h5>Keylie Hadid</h5>
+                            <h5 style="display: flex; column-gap: 5px;">Indiana Ellison <img  style="height: 12px; width: 12px; margin-top: 5px" src="assets/imo/verify.png"></h5>
                             <p class="text-bold">5 new messages</p>
                         </div>
                     </div>
@@ -727,7 +741,7 @@
 
                 <!------- FRIEND REQUEST ------->
                 <div class="friend-requests">
-                    <h4>Requests</h4>
+                    <h4>Demandes d'amitié</h4>
                     <div class="request">
                         <div class="info">
                             <div class="profile-photo">
