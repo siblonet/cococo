@@ -1,5 +1,6 @@
 async function getInitial() {
     const user_id = sessionStorage.getItem('_id');
+
     const connecta = document.getElementById('connecta');
     const connectb = document.getElementById('connectb');
     const connectc = document.getElementById('connectc');
@@ -39,16 +40,25 @@ const CloseMessega = () => {
 
 async function TeamData() {
     try {
-        const length = await requesttoBackend('GET', `suscribed/services/users`);
+       /* const length = await requesttoBackend('GET', `suscribed/services/users`);
         if (length.getta) {
             document.getElementById('Nounou').innerText = length.Nounou;
             document.getElementById('Chauffeur').innerText = length.Chauffeur;
             document.getElementById('Menage').innerText = length.Menage;
             document.getElementById('Maitre_maison').innerText = length.Maitre_maison;
-        };
+        };*/
 
         const dato = await requesttoBackend('GET', `team/show/giveaccess/Owner`);
-        if (dato.length > 0) {
+        document.getElementById('profile-photo').src = dato[0].image[0].ima;
+        document.getElementById('profile-photoa').src = dato[0].image[0].ima;
+        document.getElementById('user_name').innerHTML = `
+        ${whatisthis(dato[0].name)} 
+         ${whatisthis(dato[0].role) === "Owner" ? ' <img  style="height: 12px; width: 12px; margin-top: 7px" src="assets/imo/verified.png">' : ''}`;
+        document.getElementById('title_name').innerText = "@"+whatisthis(dato[0].role);
+        document.getElementById('profile-photob').src = dato[0].image[0].ima;
+
+        //console.log(dato[0]);
+        /*if (dato.length > 0) {
             const data = dato.filter((re) => re.allow);
             const userContents = document.getElementById('teamContents');
             userContents.innerHTML = "";
@@ -78,11 +88,11 @@ async function TeamData() {
                 userContents.innerHTML += contenttHTML;
 
             });
-        }
+        }*/
     } catch (error) {
 
     }
 
 }
-
-getInitial();
+TeamData();
+//getInitial();
