@@ -18,9 +18,20 @@ const Bg2 = document.querySelector('.bg-2');
 const Bg3 = document.querySelector('.bg-3');
 
 //story
-const showa = document.querySelector('#story_showsa');
+const showa = document.querySelectorAll('.story_showsa');
 const modala = document.querySelector('.modala');
 const modala_wrap = document.querySelector('.modala-wrapa');
+const line_runner1 = document.querySelector('#line_runner1');
+const line_runner2 = document.querySelector('#line_runner2');
+const line_runner3 = document.querySelector('#line_runner3');
+const line_runner = document.querySelector('.line_runner');
+
+const change_to_next = document.querySelector('#change_to_next');
+
+
+let timerId;
+let timerIa;
+let timerIb;
 
 // ============== SIDEBAR ============== 
 
@@ -97,6 +108,8 @@ theme.addEventListener('click', openThemeModal);
 
 // Opens Modal for shows styry
 const openStoryModal = () => {
+    line_runner.style.transition = 'width 10s linear';
+
     modala.style.pointerEvents = 'auto';
     modala.style.opacity = '1';
     modala.style.transition = 'all 300ms ease-in-out';
@@ -105,13 +118,58 @@ const openStoryModal = () => {
     modala_wrap.style.opacity = '1';
     modala_wrap.style.transform = 'scale(1)';
     modala_wrap.style.transition = 'opacity 250ms 500ms ease, transform 350ms 500ms ease';
+    line_runner1.style.width = '100%';
+
+    timerId = setTimeout(() => {
+        change_to_next.src = 'images/story-2.jpg';
+        line_runner2.style.width = '100%';
+    }, 10010);
+
+    timerIa = setTimeout(() => {
+        change_to_next.src = 'images/story-3.jpg';
+        line_runner3.style.width = '100%';
+    }, 20025);
+
+    timerIb = setTimeout(() => {
+        closeStoryModala()
+    }, 30026);
 };
 
+// Closes Modal
+const closeStoryModala = () => {
+    clearTimeout(timerId);
+    clearTimeout(timerIa);
+    clearTimeout(timerIb);
+    line_runner1.style.transition = 'width 0.5s linear';
+    line_runner2.style.transition = 'width 0.5s linear';
+    line_runner3.style.transition = 'width 0.5s linear';
+    line_runner1.style.width = '0%';
+    line_runner2.style.width = '0%';
+    line_runner3.style.width = '0%';
 
+    modala.style.pointerEvents = 'none';
+    modala.style.opacity = '0';
+    modala.style.transition = 'opacity 250ms 700ms ease';
+    modala_wrap.style.pointerEvents = 'auto';
+    modala_wrap.style.opacity = '0';
+    modala_wrap.style.transform = 'scale(0.6)';
+    modala_wrap.style.transition = 'opacity 250ms 250ms ease, transform 300ms 250ms ease';
+
+}
 
 // Closes Modal
 const closeStoryModal = (e) => {
     if (e.target.classList.contains('modala')) {
+        clearTimeout(timerId);
+        clearTimeout(timerIa);
+        clearTimeout(timerIb);
+        line_runner1.style.transition = 'width 0.5s linear';
+        line_runner2.style.transition = 'width 0.5s linear';
+        line_runner3.style.transition = 'width 0.5s linear';
+
+        line_runner1.style.width = '0%';
+        line_runner2.style.width = '0%';
+        line_runner3.style.width = '0%';
 
         modala.style.pointerEvents = 'none';
         modala.style.opacity = '0';
@@ -125,8 +183,9 @@ const closeStoryModal = (e) => {
 }
 
 modala.addEventListener('click', closeStoryModal);
-showa.addEventListener('click', openStoryModal);
-
+/*showa.forEach(showaElements => {
+    showaElements.addEventListener('click', openStoryModal);
+});*/
 // ============== FONT SIZE ============== 
 
 // remove active class from spans or font size selectors

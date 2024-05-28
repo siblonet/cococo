@@ -176,6 +176,11 @@
     right: 1.5%;
 }
 
+#change_to_next {
+
+}
+
+
 .story_line {
     border-radius: 5px;
     height: 100%;
@@ -188,13 +193,12 @@
 }
 
 .line_runner {
-    transition: width 0.5s ease;
-    width: 100%;
+    transition: width 10s linear;
+    width: 0%;
     background-color: #ffffff;
     height: 100%;
     align-self: flex-start;
-    position: absolute;
-    z-index: -1;
+    z-index: 0;
 }
 
 

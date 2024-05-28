@@ -236,9 +236,9 @@
                 <!--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ STORIES @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@-->
                 <!--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ STORIES @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@-->
                 <div class="stories">
-                    <div class="story transitb" id="story_showsa">
-                        <div class="profile-photo">
-                            <img src="./images/profile-8.jpg">
+                    <div class="story transitb story_showsa" onclick="openStoryModal()">
+                        <div class="profile-photo" onclick="openStoryModal()">
+                            <img src="./images/profile-8.jpg" onclick="openStoryModal()">
                         </div>
                         <p class="name">Present toi</p>
                         <a href="" class="story_navea">
@@ -248,33 +248,33 @@
                             </svg>
                         </a>
                     </div>
-                    <div class="story">
-                        <div class="profile-photo">
-                            <img src="./images/profile-9.jpg">
+                    <div class="story story_showsa" onclick="openStoryModal()">
+                        <div class="profile-photo" onclick="openStoryModal()">
+                            <img src="./images/profile-9.jpg" onclick="openStoryModal()">
                         </div>
                         <p class="name">Nounou</p>
                     </div>
-                    <div class="story">
-                        <div class="profile-photo">
-                            <img src="./images/profile-10.jpg">
+                    <div class="story story_showsa" onclick="openStoryModal()">
+                        <div class="profile-photo" onclick="openStoryModal()">
+                            <img src="./images/profile-10.jpg" onclick="openStoryModal()">
                         </div>
                         <p class="name">Nounou</p>
                     </div>
-                    <div class="story">
-                        <div class="profile-photo">
-                            <img src="./images/profile-11.jpg">
+                    <div class="story story_showsa" onclick="openStoryModal()">
+                        <div class="profile-photo" onclick="openStoryModal()">
+                            <img src="./images/profile-11.jpg" onclick="openStoryModal()">
                         </div>
                         <p class="name">Ménagère</p>
                     </div>
-                    <div class="story">
-                        <div class="profile-photo">
-                            <img src="./images/profile-12.jpg">
+                    <div class="story story_showsa" onclick="openStoryModal()">
+                        <div class="profile-photo" onclick="openStoryModal()">
+                            <img src="./images/profile-12.jpg" onclick="openStoryModal()">
                         </div>
                         <p class="name">Chauffeur</p>
                     </div>
-                    <div class="story transita">
-                        <div class="profile-photo">
-                            <img src="./images/profile-13.jpg">
+                    <div class="story transita story_showsa" onclick="openStoryModal()">
+                        <div class="profile-photo" onclick="openStoryModal()">
+                            <img src="./images/profile-13.jpg" onclick="openStoryModal()">
                         </div>
                         <p class="name">Esthéticienne</p>
                         <a href="" class="story_nave">
@@ -915,14 +915,18 @@
             <div class="modala-wrapa">
                 <div class="story_line_older">
                     <div class="story_line">
-                        <div class="line_runner"></div>
+                        <div class="line_runner" id="line_runner1"></div>
                     </div>
                     <div class="story_line">
+                        <div class="line_runner" id="line_runner2"></div>
+
                     </div>
                     <div class="story_line">
+                        <div class="line_runner" id="line_runner3"></div>
+
                     </div>
                 </div>
-                <img src="images/story-5.jpg" alt="">
+                <img src="images/story-1.jpg" id="change_to_next" alt="">
             </div>
         </div>
     </div>
