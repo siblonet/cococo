@@ -235,7 +235,7 @@
                 <!--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ STORIES @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@-->
                 <!--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ STORIES @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@-->
                 <!--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ STORIES @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@-->
-                <div class="stories">
+                <div class="stories" id="stories_contenant">
                     <div class="story transitb story_showsa" onclick="openStoryModal()">
                         <div class="profile-photo" onclick="openStoryModal()">
                             <img src="./images/profile-8.jpg" onclick="openStoryModal()">
@@ -926,7 +926,16 @@
 
                     </div>
                 </div>
-                <img src="images/story-1.jpg" id="change_to_next" alt="">
+                <img style="cursor: default;" src="assets/imo/baby1.webp" id="change_to_next" alt="">
+
+                <a class="profile-view" id="profile_link">
+                    <div class="profile-photo-view">
+                        <img id="profil_img" src="assets/imo/baby1.webp">
+                    </div>
+                    <p id="profil_rol"
+                        style="color: #ffffff; text-shadow: 2px 2px 4px #000000af, -2px -2px 4px #000000af, -2px 2px 4px #000000af, 2px -2px 4px #000000af;">
+                    </p>
+                </a>
             </div>
         </div>
     </div>
@@ -952,6 +961,7 @@
     <script src="servicesfunctions/product.services.js"> </script>
     <script src="servicesfunctions/variablestore.js"> </script>
     <script src="servicesfunctions/initial.js"> </script>
+    <script src="servicesfunctions/userlister.js"> </script>
 </body>
 
 </html>

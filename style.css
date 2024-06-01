@@ -66,6 +66,39 @@ img {
     width: 100%;
 }
 
+.profile-view {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    display: flex;
+    column-gap: 17px;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-bottom: 4%;
+}
+
+
+.profile-photo-view {
+    width: 3rem;
+    height: 3rem;
+    border: 3px solid var(--color-light);
+    border-radius: 50%;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.profile-photo-view img {
+    width: 100% !important;
+    height: 100% !important;
+    align-items: center !important;
+    display: inline !important;
+}
+
 .btn {
     display: inline-block;
     padding: var(--btn-padding);
@@ -319,29 +352,6 @@ main .container .left .profile {
     z-index: 0;
 }
 
-.middle .stories .story:nth-child(1) {
-    background: url("./images/story-1.jpg") no-repeat center center/cover;
-}
-
-.middle .stories .story:nth-child(2) {
-    background: url("./images/story-2.jpg") no-repeat center center/cover;
-}
-
-.middle .stories .story:nth-child(3) {
-    background: url("./images/story-3.jpg") no-repeat center center/cover;
-}
-
-.middle .stories .story:nth-child(4) {
-    background: url("./images/story-4.jpg") no-repeat center center/cover;
-}
-
-.middle .stories .story:nth-child(5) {
-    background: url("./images/story-5.jpg") no-repeat center center/cover;
-}
-
-.middle .stories .story:nth-child(6) {
-    background: url("./images/story-6.jpg") no-repeat center center/cover;
-}
 
 .middle .story .profile-photo {
     width: 2rem;

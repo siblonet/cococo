@@ -21,7 +21,7 @@
     height: auto;
     width: 50px;
     position: absolute;
-    z-index: 5;
+    z-index: 5555;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -38,11 +38,34 @@
     opacity: 1;
 }
 
+
+.story_naveb {
+    height: auto;
+    width: 50px;
+    position: absolute;
+    z-index: 5555;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background: transparent;
+    top: 0;
+    bottom: 0;
+    transition: opacity 0.5s ease;
+    left: 0;
+    opacity: 0;
+}
+
+.transita:hover .story_naveb {
+    opacity: 1;
+}
+
+
 .story_navea {
     height: auto;
     width: 50px;
     position: absolute;
-    z-index: 5;
+    z-index: 5555;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -55,9 +78,47 @@
     opacity: 0;
 }
 
+.story_naveab {
+    height: auto;
+    width: 50px;
+    position: absolute;
+    z-index: 5555;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    background: transparent;
+    top: 0;
+    bottom: 0;
+    transition: opacity 0.5s ease;
+    right: 0;
+    opacity: 0;
+}
+
 .transitb:hover .story_navea {
     opacity: 1;
 }
+
+.transitb:hover .story_naveab {
+    opacity: 1;
+}
+
+
+
+
+.story_clika {
+    height: auto;
+    width: 100%;
+    position: absolute;
+    z-index: 5555;
+    background: transparent;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 1;
+}
+
 
 /*@@@@@@@ story_nave ends @@@@@*/
 
@@ -176,9 +237,7 @@
     right: 1.5%;
 }
 
-#change_to_next {
-
-}
+#change_to_next {}
 
 
 .story_line {

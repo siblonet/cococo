@@ -18,15 +18,17 @@ const Bg2 = document.querySelector('.bg-2');
 const Bg3 = document.querySelector('.bg-3');
 
 //story
-const showa = document.querySelectorAll('.story_showsa');
 const modala = document.querySelector('.modala');
 const modala_wrap = document.querySelector('.modala-wrapa');
-const line_runner1 = document.querySelector('#line_runner1');
-const line_runner2 = document.querySelector('#line_runner2');
-const line_runner3 = document.querySelector('#line_runner3');
+const line_runner1 = document.getElementById('line_runner1');
+const line_runner2 = document.getElementById('line_runner2');
+const line_runner3 = document.getElementById('line_runner3');
 const line_runner = document.querySelector('.line_runner');
+const profile_link = document.getElementById('profile_link');
+const profil_img = document.getElementById('profil_img');
+const profil_rol = document.getElementById('profil_rol');
 
-const change_to_next = document.querySelector('#change_to_next');
+const change_to_next = document.getElementById('change_to_next');
 
 
 let timerId;
@@ -106,35 +108,6 @@ theme.addEventListener('click', openThemeModal);
 
 
 
-// Opens Modal for shows styry
-const openStoryModal = () => {
-    line_runner.style.transition = 'width 10s linear';
-
-    modala.style.pointerEvents = 'auto';
-    modala.style.opacity = '1';
-    modala.style.transition = 'all 300ms ease-in-out';
-
-    modala_wrap.style.pointerEvents = 'auto';
-    modala_wrap.style.opacity = '1';
-    modala_wrap.style.transform = 'scale(1)';
-    modala_wrap.style.transition = 'opacity 250ms 500ms ease, transform 350ms 500ms ease';
-    line_runner1.style.width = '100%';
-
-    timerId = setTimeout(() => {
-        change_to_next.src = 'images/story-2.jpg';
-        line_runner2.style.width = '100%';
-    }, 10010);
-
-    timerIa = setTimeout(() => {
-        change_to_next.src = 'images/story-3.jpg';
-        line_runner3.style.width = '100%';
-    }, 20025);
-
-    timerIb = setTimeout(() => {
-        closeStoryModala()
-    }, 30026);
-};
-
 // Closes Modal
 const closeStoryModala = () => {
     clearTimeout(timerId);
@@ -183,9 +156,6 @@ const closeStoryModal = (e) => {
 }
 
 modala.addEventListener('click', closeStoryModal);
-/*showa.forEach(showaElements => {
-    showaElements.addEventListener('click', openStoryModal);
-});*/
 // ============== FONT SIZE ============== 
 
 // remove active class from spans or font size selectors
