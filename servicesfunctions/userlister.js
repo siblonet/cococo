@@ -19,9 +19,13 @@ const openStoryModal = async (_id) => {
     modala_wrap.style.transform = 'scale(1)';
     modala_wrap.style.transition = 'opacity 250ms 500ms ease, transform 350ms 500ms ease';
     line_runner1.style.width = '100%';
-    profile_link.href = _id;
+    profile_link.setAttribute("onclick", `getProfile('${_id}')`);
     profil_img.src = user_content.image[0].ima
-    profil_rol.innerText = whatisthis(user_content.role);
+    profil_rol.innerHTML = `
+        ${whatisthis(user_content.role)}
+        <img style="height: 12px; width: 12px; margin-top: 3px" src="assets/imo/${user_content.status ? whatisthis(user_content.role) === "Owner" ? 'verify.png' : 'verified.png' : whatisthis(user_content.role) === "Owner" ? 'verify.png' : 'bad_verify.png'}">
+    `;
+    
 
 
     timerId = setTimeout(() => {

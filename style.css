@@ -78,6 +78,7 @@ img {
     padding-left: 5%;
     padding-right: 5%;
     padding-bottom: 4%;
+    cursor: pointer;
 }
 
 
@@ -97,6 +98,11 @@ img {
     height: 100% !important;
     align-items: center !important;
     display: inline !important;
+}
+
+#profil_rol {
+    display: flex;
+    align-items: center;
 }
 
 .btn {
