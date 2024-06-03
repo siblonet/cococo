@@ -1,26 +1,45 @@
 async function getInitial() {
+    //sessionStorage.clear();
+    const connected_u = document.getElementById('connected_u')
+    const show_profile = document.getElementById('show_profile')
     const user_id = sessionStorage.getItem('_id');
-
-    const connecta = document.getElementById('connecta');
-    const connectb = document.getElementById('connectb');
-    const connectc = document.getElementById('connectc');
-    const connectd = document.getElementById('connectd');
-    const htmloo = `
-    Compte
-    <figure class="mb-0">
-        <i class="fa-solid fa-user"></i>
-    </figure>
-
-`;
     if (user_id) {
-        connecta.innerHTML = htmloo;
-        connecta.href = "profile";
-        connectb.innerHTML = htmloo;
-        connectb.href = "profile";
-        connectc.classList = "";
-        connectc.innerHTML = "";
-        connectd.innerHTML = htmloo;
-        connectd.href = "profile";
+        const dato = await GetPersonByID(user_id);
+        connected_u.innerHTML = `
+            <a class="btn btn-primary" onclick="Disconnection()" style="cursor: pointer;">Sé deconnecter</a>
+        `;
+
+        show_profile.setAttribute("onclick", `getProfile('${user_id}')`);
+        //document.getElementById('profile-photo').src = dato.image[0] ? dato.image[0].ima : "assets/imo/avatay.png";
+        document.getElementById('profile-photoa').src = dato.image[0] ? dato.image[0].ima : "assets/imo/avatay.png";
+        document.getElementById('user_name').innerHTML = `
+        ${whatisthis(dato.name)} 
+          <img style="height: 12px; width: 12px; margin-top: 7px" src="assets/imo/${dato.status ? whatisthis(dato.role) === "Owner" ? 'verify.png' : 'verified.png' : whatisthis(dato.role) === "Owner" ? 'verify.png' : 'bad_verify.png'}">
+         `;
+        document.getElementById('title_name').innerText = "@" + whatisthis(dato.role);
+        document.getElementById('profile-photob').src = dato.image[0] ? dato.image[0].ima : "assets/imo/avatay.png";
+        if (dato.role === "iVXIFGVFI") {
+            document.getElementById('travail_demand').innerText = "Vos Récrutements";
+        }
+        
+    } else {
+        await deletePeople();
+        const dato = await requesttoBackend('GET', `team/show/giveaccess/Owner`);
+        connected_u.innerHTML = `
+            <a class="btn btn-primary" onclick="openAccountModal()" style="cursor: pointer;">Créer Compte</a>
+            <div class="profile-photo">
+                <img id="profile-photo" src="${dato[0].image[0] ? dato[0].image[0].ima : "assets/imo/avatay.png"}" alt="load">
+            </div>
+        `;
+        //document.getElementById('profile-photo').src = dato[0].image[0].ima;
+        document.getElementById('profile-photoa').src = dato[0].image[0].ima;
+        document.getElementById('user_name').innerHTML = `
+        ${whatisthis(dato[0].name)} 
+         ${whatisthis(dato[0].role) === "Owner" ? ' <img  style="height: 12px; width: 12px; margin-top: 7px" src="assets/imo/verify.png">' : ''}`;
+        document.getElementById('title_name').innerText = "@" + whatisthis(dato[0].role);
+        document.getElementById('profile-photob').src = dato[0].image[0].ima;
+        show_profile.setAttribute("onclick", `getProfilea('${dato[0]._id}')`);
+
     };
 
     await TeamData();
@@ -38,18 +57,19 @@ const CloseMessega = () => {
     document.getElementById('messaga').innerHTML = "";
 }
 
+const Disconnection = async () => {
+    var result = window.confirm("Etes vous sur ne vouloir, vous deconnectez?");
+    if (result) {
+        sessionStorage.clear();
+        await deletePeople();
+        getInitial()
+    }
+
+}
+
+
 async function TeamData() {
     try {
-
-        const dato = await requesttoBackend('GET', `team/show/giveaccess/Owner`);
-        document.getElementById('profile-photo').src = dato[0].image[0].ima;
-        document.getElementById('profile-photoa').src = dato[0].image[0].ima;
-        document.getElementById('user_name').innerHTML = `
-        ${whatisthis(dato[0].name)} 
-         ${whatisthis(dato[0].role) === "Owner" ? ' <img  style="height: 12px; width: 12px; margin-top: 7px" src="assets/imo/verify.png">' : ''}`;
-        document.getElementById('title_name').innerText = "@" + whatisthis(dato[0].role);
-        document.getElementById('profile-photob').src = dato[0].image[0].ima;
-
         const user_content = await requesttoBackend('GET', `team/show/giveaccess/${'user'}`);
         //console.log(user_content);
         await deleteCandidat();
@@ -129,7 +149,6 @@ async function TeamData() {
     }
 
 }
-TeamData();
 
 async function NextCandidates(curren) {
     try {
@@ -321,4 +340,4 @@ async function PreviousCandidates(curren) {
     }
 
 }
-//getInitial();
+getInitial();

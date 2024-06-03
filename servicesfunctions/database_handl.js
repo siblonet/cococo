@@ -51,3 +51,34 @@ function openCandidatDatabase() {
         };
     });
 };
+
+
+
+
+
+function openJobDatabase() {
+    return new Promise((resolve, reject) => {
+        const dbName = "candidatJob";
+        const dbVersion = 3;
+
+        const request = indexedDB.open(dbName, dbVersion);
+        let copine;
+
+        request.onerror = (event) => {
+            reject("Database error: " + event.target.errorCode);
+        };
+
+        request.onsuccess = (event) => {
+            copine = event.target.result;
+            resolve(copine);
+        };
+
+        request.onupgradeneeded = (event) => {
+            copine = event.target.result;
+
+            if (!copine.objectStoreNames.contains("jobContent")) {
+                copine.createObjectStore("jobContent", { keyPath: "_id" });
+            }
+        };
+    });
+};

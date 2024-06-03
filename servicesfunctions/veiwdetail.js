@@ -1,34 +1,3 @@
-function getUrlParameter(paramName) {
-    paramName = paramName.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
-    let regex = new RegExp('[\\?&]' + paramName + '=([^&#]*)');
-    let results = regex.exec(location.search);
-    return results === null ? null : decodeURIComponent(results[1].replace(/\+/g, ' '));
-}
-
-const svcValue = getUrlParameter('svc');
-
-if (!svcValue || svcValue.length < 5) {
-    ///document.getElementById('coverfor').classList.add("preloader-area");
-} else {
-    document.getElementById('commentsa').innerHTML = "";
-    //document.getElementById('respond').innerHTML = "";
-
-    /*document.getElementById('sel_service_b').innerText = `
-     Veuillez faire défiler vers le bas pour accéder à la liste des ${svcValue}. Cliquez ensuite sur les différents ${svcValue} pour obtenir plus de détails les concernant
-    `;*/
-    document.getElementById('postid').value = svcValue;
-    const user_id = sessionStorage.getItem('_id');
-    if (user_id) {
-        document.getElementById('login').innerHTML = `
-            <a class="nav-link" href="profile">Mon Compte</a>
-        `;
-
-        document.getElementById('creacom').innerHTML = "";
-    }
-
-    RequestData()
-}
-
 let imageso = [];
 async function RequestData() {
     try {
@@ -250,15 +219,17 @@ const PaymenSession = `
 
 
 
-const Deverrouillage = async () => {
-    const user_id = sessionStorage.getItem('_id');
+const Deverrouillage = async (user_id) => {
+    const unlock = document.getElementById('unlock');
 
     if (user_id) {
-        const sesStoge = await GetCandidatByID(svcValue);
+        let sesStoge = await GetCandidatByID(user_id);
+        if (!sesStoge) {
+            sesStoge = await GetPersonByID(user_id);
+        }
         const username = whatisthis(sesStoge.name);
         const userphone = whatisthis(sesStoge.phone);
         const useremail = whatisthis(sesStoge.email);
-        const userrole = whatisthis(sesStoge.role);
         const userville = whatisthis(sesStoge.ville);
         const userbio = whatisthis(sesStoge.bio);
         const usersex = whatisthis(sesStoge.sex);
@@ -274,15 +245,14 @@ const Deverrouillage = async () => {
 
 
 
-        document.getElementById('username').innerText = username;
-        document.getElementById('userrole').innerText = userrole;
-        document.getElementById('userbio').innerText = userbio;
+        document.getElementById('name_tag').innerText = username;
+        document.getElementById('desc_tag').innerText = userbio;
         document.getElementById('userphone').innerText = userphone;
         document.getElementById('useremail').innerText = useremail;
         document.getElementById('userville').innerText = userville;
         document.getElementById('useraddress').innerText = useraddress;
         document.getElementById('usersex').innerText = usersex;
-        document.getElementById('useravailability').innerText = useravailability === "true" ? "Diponible" : "Indisponible";
+        document.getElementById('useravailability').innerText = useravailability === "true" ? "Suis disponible" : "Suis pas disponible";
 
 
         document.getElementById('usersituation').innerText = usersituation === "true" ? "Marié" : "Célibataire";
@@ -291,13 +261,15 @@ const Deverrouillage = async () => {
         document.getElementById('userwhatsapp').innerText = userwapp;
         document.getElementById('usernationality').innerText = usernatinalite;
         document.getElementById('userreligion').innerText = userreligion;
-        document.getElementById('userschool').innerText = useretudient === "true" ? "Oui" : "Non";
+        document.getElementById('userschool').innerText = useretudient === "true" ? "Suis etudiant(e)" : "Suis pas etudiant(e)";
         const givenDate = new Date(userage);
         const currentDate = new Date();
         const differenceMs = currentDate - givenDate;
         const differenceYears = differenceMs / (1000 * 60 * 60 * 24 * 365);
         const yearsOld = Math.floor(differenceYears);
         document.getElementById('userage').innerText = yearsOld;
+        unlock.classList = "fa fa-eye"
+        document.getElementById('user_profile_detail').style.display = "block";
 
         //document.getElementById('paymensession').innerHTML = PaymenSession;
     } else {
@@ -372,107 +344,8 @@ const commentsHtml = `
 
 `;
 
-const DeleteComment = async (id) => {
-    const trashlodin = document.getElementById(`${id}a`);
-    trashlodin.classList = "fa fa-spinner fa-spin";
 
 
-    const deleti = await requesttoBackend('DELETE', `deletingcopinecomment/${id}`);
-    if (deleti.done) {
-        document.getElementById('commentsa').innerHTML = "";
-        CommentNumber()
-        ShowComment();
-    }
-}
-
-
-
-
-const ShowComment = async () => {
-    const user_id = sessionStorage.getItem('_id');
-
-    document.getElementById('commentsa').innerHTML = `
-                <div class="comment_number text-uppercase font_weight_600">
-                    En cours...
-                </div>
-        `;
-    const comments = await requesttoBackend('GET', `gettingbycopinecomment/${document.getElementById('postid').value}`);
-
-    if (comments.length > 0) {
-        document.getElementById('commentsa').innerHTML = `
-                <div class="comment_number text-uppercase font_weight_600">
-                    Commentaires <span id="comentnumbera">(${comments.length})</span>
-                </div>
-                <div class="comment-list" id="ComentContents">
-
-                </div> 
-        `;
-
-        const ComentContents = document.getElementById('ComentContents');
-        ComentContents.innerHTML = "";
-        moment.locale('fr');
-
-        comments.forEach((comment, index) => {
-            const ComenttHTML = `
-                    <div class="comment" id="${comment._id}">
-                        <div class="image">
-                            <img alt="" src="${comment.commenta.image.length > 0 ? comment.commenta.image[0].ima : "assets/images/avatay.png"}" class="avatar">
-                        </div>
-                        <div class="text">
-                            <h5 class="name font_weight_700">${whatisthis(comment.commenta.name)}${whatisthis(comment.commenta.role) === "Owner" ? ' <img  style="height: 15px; width: 15px;" src="assets/images/park_success.png">' : ''}</h5>
-                            <span class="comment_date">
-                                <i class="far fa-clock"></i> ${moment(comment.comented_at).format('MMMM Do YYYY, HH:mm:ss')}
-                            </span>
-                            <a onclick="ShowReplyable('${comment._id}')" class="comment-reply-link" style="cursor: pointer; color: #145fb8;">
-                                <i class="fa fa-reply" style="color: #2d96db !important;"></i> ${comment.reply}
-                                Répondre 
-                            </a>
-                            ${comment.commenta._id === user_id ?
-                    `
-                                    <a class="comment-reply-link" style="cursor: pointer; color: #145fb8; margin-left: 5px;" onclick="DeleteComment('${comment._id}')">
-                                        <i id="${comment._id}a" class="fa fa-trash" style="color: #da1a34 !important"></i>
-                                    </a>
-                            ` :
-
-                    ''}
-                            <div class="text_holder">
-                                <p class="text-size-16">
-                                ${comment.message}
-                                </p>
-                            </div>
-                            
-
-
-
-                                <div class="widget widget-newsletter replaybar" id="${comment._id}idtagconreplable">
-                                    
-                                </div>
-
-                        </div>
-                        <div class="comment post-item-description" id="${comment._id}repiesSubs">
-                            
-                        </div>
-                    </div>
-                   
-            `;
-
-            ComentContents.innerHTML += ComenttHTML;
-
-        });
-
-    } else {
-        document.getElementById('commentsa').innerHTML = `
-        <div class="comment_number text-uppercase font_weight_600">
-            Commentaires <span id="comentnumbera">(0)</span>
-        </div>
-        <div class="comment-list" id="ComentContents">
-
-        </div> 
-`;
-    }
-
-
-}
 
 async function ShowReplyable(params) {
     const user_id = sessionStorage.getItem('_id');
@@ -565,35 +438,7 @@ const Sendreply = async (comid) => {
 
 }
 
-const SendComennt = async () => {
-    const user_id = sessionStorage.getItem('_id');
-    const loading = document.getElementById('Envoyer');
 
-
-    if (user_id) {
-        loading.removeAttribute("onclick");
-        loading.innerHTML = `En cours ...`;
-        const data = {
-            commenta: user_id,
-            recepto: document.getElementById('postid').value,
-            message: document.getElementById('comment').value,
-        };
-
-        const comment = await requesttoBackend('POST', 'commentcopinecreating', data);
-        if (comment && comment.length > 0) {
-            document.getElementById('comment').value = "";
-            CommentNumber();
-            ShowComment();
-        }
-
-
-        loading.setAttribute("onclick", "SendComennt()");
-        loading.innerHTML = `Envoyer`;
-    } else {
-        alert("Connectez-vous ou Créez un compte pour commenter")
-    }
-
-}
 
 const CommentNumber = async () => {
     const comments = await requesttoBackend('GET', `gettingbycopinecomment/${document.getElementById('postid').value}`);
@@ -605,13 +450,3 @@ const CommentNumber = async () => {
     `;
 }
 
-const DeleteReply = async (id, com_id) => {
-    const trashlodin = document.getElementById(`${id}a`);
-    trashlodin.classList = "fa fa-spinner fa-spin";
-
-
-    const deleti = await requesttoBackend('DELETE', `deletingreplycopine/${id}`);
-    if (deleti.done) {
-        ShowReplyable(com_id)
-    }
-}

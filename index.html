@@ -108,8 +108,8 @@
                 <i class="uil uil-search"></i>
                 <input type="search" placeholder="Recherche Nounou, Ménagère, Vigile, Chauffeur ...">
             </div>
-            <div class="create">
-                <label class="btn btn-primary" for="create-post">Compte</label>
+            <div class="create" id="connected_u">
+                <a class="btn btn-primary" onclick="openAccountModal()" style="cursor: pointer;">Créer Compte</a>
                 <div class="profile-photo">
                     <img id="profile-photo" src="assets/imo/avatay.png" alt="load">
                 </div>
@@ -121,8 +121,8 @@
     <main>
         <div class="container">
             <!----------------- LEFT -------------------->
-            <div class="left">
-                <a class="profile">
+            <div class="left" style="margin-bottom: 350px;">
+                <a class="profile" style="cursor: pointer;" id="show_profile">
                     <div class="profile-photo">
                         <img id="profile-photoa" src="assets/imo/avatay.png" alt="load">
                     </div>
@@ -237,12 +237,13 @@
                         <h3>Paramètre</h3>
                     </a>
                 </div>
-                <!----------------- END OF SIDEBAR -------------------->
-                <label class="btn btn-primary" for="create-post">Créer Compte</label>
+                <!----------------- END OF SIDEBAR ------------------ -->
+                <a class="btn btn-primary" style="cursor: pointer;" onclick="openRecrutementForm()">Récruter</a>
+
             </div>
 
             <!----------------- MIDDLE -------------------->
-            <div class="middle">
+            <div class="middle" style="margin-bottom: 350px;">
                 <!--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ STORIES @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@-->
                 <!--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ STORIES @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@-->
                 <!--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ STORIES @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@-->
@@ -306,7 +307,7 @@
 
 
 
-                <form action="" class="create-post">
+                <form class="create-post">
                     <div class="profile-photo">
                         <img id="profile-photob" src="assets/imo/avatay.png">
                     </div>
@@ -336,18 +337,165 @@
                                 <div class="user-profil_view">
                                     <div class="name-profil_view">
                                         <h3 id="name_tag"></h3>
-                                        <p id="status_tag" style="">
+                                        <p id="status_tag">
                                         </p>
                                     </div>
+
+
                                     <div class="follow-profil_view">
-                                        <button style="cursor: pointer;" type="button"
-                                            onclick="NaveTo()">Modifier</button>
+                                        <button id="Deverrouillage_id" style="cursor: pointer;" type="button"
+                                            onclick="Deverrouillage(sessionStorage.getItem('_id'))">
+                                            <i id="unlock" class="fa fa-eye-slash" style="color: #aaaaaa;"></i>
+                                            Voir
+                                        </button>
                                     </div>
                                 </div>
+
                                 <div class="desc-profil_view">
-                                    <p id="desc_tag" style="">
+                                    <p id="desc_tag">
                                     </p>
                                 </div>
+
+
+                                <div id="user_profile_detail" style="padding: 5%;">
+                                    <div class="user-profil_view">
+                                        <div class="">
+                                            <p>Votre ville: </p>
+                                        </div>
+                                        <div class="">
+                                            <p id="userville">Abidjan</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="user-profil_view">
+                                        <div class="">
+                                            <p>Votre commune: </p>
+                                        </div>
+                                        <div class="">
+                                            <p id="useraddress">Cocody</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="user-profil_view">
+                                        <div class="">
+                                            <p>Sex: </p>
+                                        </div>
+                                        <div class="">
+                                            <p id="usersex">Homme</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="user-profil_view">
+                                        <div class="">
+                                            <p>Situation Matrimonial: </p>
+                                        </div>
+                                        <div class="">
+                                            <p id="usersituation">Marié</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="user-profil_view">
+                                        <div class="">
+                                            <p>Date de naissance: </p>
+                                        </div>
+                                        <div class="">
+                                            <p id="userage">2000-7-10</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="user-profil_view">
+                                        <div class="">
+                                            <p>Etudiant(e): </p>
+                                        </div>
+                                        <div class="">
+                                            <p id="userschool">Suis pas etudiant</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="user-profil_view">
+                                        <div class="">
+                                            <p>Pro: </p>
+                                        </div>
+                                        <div class="">
+                                            <p>@</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="user-profil_view">
+                                        <div class="">
+                                            <p>Numéro: </p>
+                                        </div>
+                                        <div class="">
+                                            <p id="userphone">0554468221</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="user-profil_view">
+                                        <div class="">
+                                            <p>WhatsApp: </p>
+                                        </div>
+                                        <div class="">
+                                            <p id="userwhatsapp">+13257330245</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="user-profil_view">
+                                        <div class="">
+                                            <p>Mail: </p>
+                                        </div>
+                                        <div class="">
+                                            <p id="useremail">atesvaldeve@gmail.com</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="user-profil_view">
+                                        <div class="">
+                                            <p>Disponibilité: </p>
+                                        </div>
+                                        <div class="">
+                                            <p id="useravailability">Suis disponible</p>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="user-profil_view">
+                                        <div class="">
+                                            <p>Access: </p>
+                                        </div>
+                                        <div class="">
+                                            <p>Autorisé</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="user-profil_view">
+                                        <div class="">
+                                            <p>Nationnalité: </p>
+                                        </div>
+                                        <div class="">
+                                            <p id="usernationality">Ghanéen</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="user-profil_view">
+                                        <div class="">
+                                            <p>Réligion: </p>
+                                        </div>
+                                        <div class="">
+                                            <p id="userreligion">Musilman</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="follow-profil_view"
+                                        style="width: 100%; justify-content: center; text-align: center; align-items: center;">
+                                        <button id="Assigner_button" style="cursor: pointer;" type="button"
+                                            onclick="Deverrouillage()">
+                                            <i id="Assigner_loading" class="fa fa-handshake"
+                                                style="color: #aaaaaa;"></i>
+                                        </button>
+                                        <p style="color: #cccccc; font-size: 12px;">Assigner</p>
+                                    </div>
+                                </div>
+
 
                                 <hr class="styled-hr-profil_view">
 
@@ -401,7 +549,7 @@
                                     </div>
                                     <br>
 
-                                    <div class="comment_dis_sessse-profil_view" style="">
+                                    <div class="comment_dis_sessse-profil_view">
                                         <div class="comment_photo_sess_style-profil_view">
                                             <div class="comment_photo_style-profil_view">
                                                 <img id="comment_ima_tag" src="assets/imo/baby1.webp"
@@ -826,7 +974,7 @@
             <!----------------- END OF MIDDLE -------------------->
 
             <!----------------- RIGHT -------------------->
-            <div class="right">
+            <div class="right" style="margin-bottom: 350px;">
                 <!------- MESSAGES ------->
                 <div class="messages">
                     <div class="heading">
@@ -916,63 +1064,9 @@
 
                 <!------- FRIEND REQUEST ------->
                 <div class="friend-requests">
-                    <h4>Demandes d'amitié</h4>
-                    <div class="request">
-                        <div class="info">
-                            <div class="profile-photo">
-                                <img src="./images/profile-20.jpg">
-                            </div>
-                            <div>
-                                <h5>Hajia Bintu</h5>
-                                <p class="text-muted">8 mutual friends</p>
-                            </div>
-                        </div>
-                        <div class="action">
-                            <button class="btn btn-primary">
-                                Accept
-                            </button>
-                            <button class="btn">
-                                Decline
-                            </button>
-                        </div>
-                    </div>
-                    <div class="request">
-                        <div class="info">
-                            <div class="profile-photo">
-                                <img src="./images/profile-18.jpg">
-                            </div>
-                            <div>
-                                <h5>Edelson Mandela</h5>
-                                <p class="text-muted">2 mutual friends</p>
-                            </div>
-                        </div>
-                        <div class="action">
-                            <button class="btn btn-primary">
-                                Accept
-                            </button>
-                            <button class="btn">
-                                Decline
-                            </button>
-                        </div>
-                    </div>
-                    <div class="request">
-                        <div class="info">
-                            <div class="profile-photo">
-                                <img src="./images/profile-17.jpg">
-                            </div>
-                            <div>
-                                <h5>Megan Baldwin</h5>
-                                <p class="text-muted">5 mutual friends</p>
-                            </div>
-                        </div>
-                        <div class="action">
-                            <button class="btn btn-primary">
-                                Accept
-                            </button>
-                            <button class="btn">
-                                Decline
-                            </button>
-                        </div>
+                    <h4 id="travail_demand">Offres Emploies</h4>
+                    <div id="job_display">
+                        <p>En cours ...</p>
                     </div>
                 </div>
             </div>
@@ -1100,6 +1194,395 @@
     <!-- @@@@@@@@@@@@@@ story shows end @@@@@@@@@@@@@@ -->
 
 
+
+
+
+    <!-- @@@@@@@@@@@@@@ account start @@@@@@@@@@@@@@ -->
+    <!-- @@@@@@@@@@@@@@ account start @@@@@@@@@@@@@@ -->
+    <!-- @@@@@@@@@@@@@@ account start @@@@@@@@@@@@@@ -->
+    <!-- @@@@@@@@@@@@@@ account start @@@@@@@@@@@@@@ -->
+    <!-- @@@@@@@@@@@@@@ account start @@@@@@@@@@@@@@ -->
+
+    <div class="section full-height" id="compte">
+        <div class="modala_compte">
+            <div class="modala-wrapa_compte">
+                <a onclick="closeAccountModala()"
+                    style="cursor: pointer; padding: 10px; color: #ff0000; background-color: #eeeeee; border-radius: 50%; font-weight: bold;">X</a>
+                <div style="background: #eeeeee; height: 100%; width: 100%; padding: 3%;" id="aoount_view_contaner">
+                    <div style="display: flex; width: 100%; flex-wrap: wrap; justify-content: space-between;">
+                        <a class="btn btn-primary" onclick="AccountView('connect')" style="cursor: pointer;">
+                            Connexion
+                        </a>
+
+                        <a class="btn btn-primary" onclick="AccountView('create')" style="cursor: pointer;">
+                            Créer Compte
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <!-- @@@@@@@@@@@@@@ account ends @@@@@@@@@@@@@@ -->
+    <!-- @@@@@@@@@@@@@@ account ends @@@@@@@@@@@@@@ -->
+    <!-- @@@@@@@@@@@@@@ account ends @@@@@@@@@@@@@@ -->
+    <!-- @@@@@@@@@@@@@@ account ends @@@@@@@@@@@@@@ -->
+    <!-- @@@@@@@@@@@@@@ account ends @@@@@@@@@@@@@@ -->
+
+
+
+
+
+
+
+
+
+
+
+    <!-- @@@@@@@@@@@@@@ Recrutement form start @@@@@@@@@@@@@@ -->
+    <!-- @@@@@@@@@@@@@@ Recrutement form start @@@@@@@@@@@@@@ -->
+    <!-- @@@@@@@@@@@@@@ Recrutement form start @@@@@@@@@@@@@@ -->
+    <!-- @@@@@@@@@@@@@@ Recrutement form start @@@@@@@@@@@@@@ -->
+    <!-- @@@@@@@@@@@@@@ Recrutement form start @@@@@@@@@@@@@@ -->
+    <!-- @@@@@@@@@@@@@@ Recrutement form start @@@@@@@@@@@@@@ -->
+
+    <div class="section full-height" id="recrutement_form">
+        <div class="modala_recrutement_form">
+            <div class="modala_wrapa_recrutement_form">
+                <a onclick="closeRecrutementForma()"
+                    style="cursor: pointer; padding: 10px; color: #ff0000; background-color: #eeeeee; border-radius: 50%; font-weight: bold;">X</a>
+                <div style="background: #eeeeee; height: 100%; width: 100%; padding: 3%;"
+                    id="recrutement_form_view_contaner">
+
+
+                    <div class="">
+                        <label for="selecrole" style="color: #aaaaaa; font-size: 12px;">
+                            Roles
+                        </label>
+                        <select
+                            style="width: 100%; height: 2rem; background-color: #ffffff; border-radius: 7px; padding-left: 2%; padding-right: 2%;"
+                            id="selecrole">
+                            <option value="">SÉLECTIONNE TON ROLE</option>
+                            <option value="Recruteur">Recruter</option>
+                            <option value="Request">Partenaire</option>
+                            <option value="Nounou">Nounou</option>
+                            <option value="Menage">Menange</option>
+                            <option value="Chauffeur">Chauffeur</option>
+                            <option value="Maitre_maison">Maitre de maison</option>
+                            <option value="Chef_Cuisinier">Chef Cuisinier</option>
+                            <option value="Coiffeur">Coiffeur</option>
+                            <option value="Coiffeuse">Coiffeuse</option>
+                            <option value="Coursier">Coursier</option>
+                            <option value="Vendeuse">Vendeuse</option>
+                            <option value="Servante">Vendeuse</option>
+                            <option value="Serveuse">Vendeuse</option>
+                            <option value="Serveur">Vendeuse</option>
+                            <option value="Rayonniste">Rayonniste</option>
+                            <option value="Rayonnist">Rayonnist</option>
+                            <option value="Technicien_de_surface">Technicien de surface</option>
+                            <option value="esthticienne">esthéticienne</option>
+                            <option value="Teleconseilleur">Téléconseilleur</option>
+                            <option value="vigile">vigile</option>
+                            <option value="Autre">Autre</option>
+                        </select>
+                    </div>
+                    <div style="height: 15px;"></div>
+
+                    <div class="">
+                        <p>Jour de travail</p>
+
+                        <div style="width: 100%; display: flex; flex-wrap: wrap;">
+                            <div class="check_boxa">
+                                <label for="sevent_d" style="color: #aaaaaa; font-size: 12px;">
+                                    7 jours sur 7
+                                </label>
+                                <input type="checkbox" id="sevent_d" autocomplete="off"
+                                    style="width: 35px; height: 1.2rem; background-color: #ffffff; padding-left: 2%; padding-right: 2%;">
+                            </div>
+
+                            <div class="check_boxa">
+                                <label for="Lundi" style="color: #aaaaaa; font-size: 12px;">Lundi</label>
+                                <input type="checkbox" id="Lundi" autocomplete="off"
+                                    style="width: 35px; height: 1.2rem; background-color: #ffffff; padding-left: 2%; padding-right: 2%;">
+                            </div>
+
+                            <div class="check_boxa">
+                                <label for="Mardi" style="color: #aaaaaa; font-size: 12px;">Mardi</label>
+                                <input type="checkbox" id="Mardi" autocomplete="off"
+                                    style="width: 35px; height: 1.2rem; background-color: #ffffff; padding-left: 2%; padding-right: 2%;">
+                            </div>
+
+                            <div class="check_boxa">
+                                <label for="Mercredi" style="color: #aaaaaa; font-size: 12px;">Mercredi</label>
+                                <input type="checkbox" id="Mercredi" autocomplete="off"
+                                    style="width: 35px; height: 1.2rem; background-color: #ffffff; padding-left: 2%; padding-right: 2%;">
+                            </div>
+
+                            <div class="check_boxa">
+                                <label for="Jeudi" style="color: #aaaaaa; font-size: 12px;">Jeudi</label>
+                                <input type="checkbox" id="Jeudi" autocomplete="off"
+                                    style="width: 35px; height: 1.2rem; background-color: #ffffff; padding-left: 2%; padding-right: 2%;">
+                            </div>
+
+                            <div class="check_boxa">
+                                <label for="Vendredi" style="color: #aaaaaa; font-size: 12px;">Vendredi</label>
+                                <input type="checkbox" id="Vendredi" autocomplete="off"
+                                    style="width: 35px; height: 1.2rem; background-color: #ffffff; padding-left: 2%; padding-right: 2%;">
+                            </div>
+
+                            <div class="check_boxa">
+                                <label for="Samedi" style="color: #aaaaaa; font-size: 12px;">Samedi</label>
+                                <input type="checkbox" id="Samedi" autocomplete="off"
+                                    style="width: 35px; height: 1.2rem; background-color: #ffffff; padding-left: 2%; padding-right: 2%;">
+                            </div>
+
+                            <div class="check_boxa">
+                                <label for="Dimanche" style="color: #aaaaaa; font-size: 12px;">Dimanche</label>
+                                <input type="checkbox" id="Dimanche" autocomplete="off"
+                                    style="width: 35px; height: 1.2rem; background-color: #ffffff; padding-left: 2%; padding-right: 2%;">
+                            </div>
+
+                        </div>
+
+
+
+                    </div>
+
+                    <div style="height: 15px;"></div>
+
+                    <label for="heur_debute" style="color: #aaaaaa; font-size: 12px;">
+                        l'heure débute
+                    </label>
+                    <input type="time" placeholder="" id="heur_debute" autocomplete="off"
+                        style="width: 100%; height: 2rem; background-color: #ffffff; border-radius: 7px; padding-left: 2%; padding-right: 2%;">
+
+                    <label for="heur_descente" style="color: #aaaaaa; font-size: 12px;">
+                        l'heure descente
+                    </label>
+                    <input type="time" placeholder="" id="heur_descente" autocomplete="off"
+                        style="width: 100%; height: 2rem; background-color: #ffffff; border-radius: 7px; padding-left: 2%; padding-right: 2%;">
+
+
+                    <div style="height: 15px;"></div>
+
+                    <label for="Ville" style="color: #aaaaaa; font-size: 12px;">
+                        Ville
+                    </label>
+
+                    <input type="text" placeholder="Ville" id="Ville" autocomplete="off"
+                        style="width: 100%; height: 2rem; background-color: #ffffff; border-radius: 7px; padding-left: 2%; padding-right: 2%;">
+
+                    <div style="height: 15px;"></div>
+
+                    <label for="Commune" style="color: #aaaaaa; font-size: 12px;">
+                        Commune
+                    </label>
+
+                    <input type="text" placeholder="Commune" id="Commune" autocomplete="off"
+                        style="width: 100%; height: 2rem; background-color: #ffffff; border-radius: 7px; padding-left: 2%; padding-right: 2%;">
+
+                    <div style="height: 15px;"></div>
+
+                    <label for="Salaire" style="color: #aaaaaa; font-size: 12px;">
+                        Salaire
+                    </label>
+
+                    <input type="number" placeholder="Salaire" id="Salaire" autocomplete="off"
+                        style="width: 100%; height: 2rem; background-color: #ffffff; border-radius: 7px; padding-left: 2%; padding-right: 2%;">
+
+                    <div style="height: 15px;"></div>
+
+                    <label for="Age-range" style="color: #aaaaaa; font-size: 12px;">
+                        Plage d'Age
+                    </label>
+
+                    <input type="text" placeholder="Plage d'Age ex: 18-50" id="Age-range" autocomplete="off"
+                        style="width: 100%; height: 2rem; background-color: #ffffff; border-radius: 7px; padding-left: 2%; padding-right: 2%;">
+
+                    <div style="height: 15px;"></div>
+
+                    <div class="">
+                        <label for="matrimonial" style="color: #aaaaaa; font-size: 12px;">
+                            Une personne marié ou?
+                        </label>
+                        <select
+                            style="width: 100%; height: 2rem; background-color: #ffffff; border-radius: 7px; padding-left: 2%; padding-right: 2%;"
+                            id="matrimonial">
+                            <option value="">FAITES VOTRE CHOIX</option>
+                            <option value="MARIE">MARIE</option>
+                            <option value="CELIBATAIRE">CELIBATAIRE</option>
+                            <option value="TOUS">TOUS</option>
+                        </select>
+                    </div>
+
+                    <div style="height: 15px;"></div>
+
+                    <div class="">
+                        <label for="sex_choi" style="color: #aaaaaa; font-size: 12px;">
+                            SEX DE PREFERENCE
+                        </label>
+                        <select
+                            style="width: 100%; height: 2rem; background-color: #ffffff; border-radius: 7px; padding-left: 2%; padding-right: 2%;"
+                            id="sex_choi">
+                            <option value="">FAITES VOTRE CHOIX</option>
+                            <option value="HOMME">HOMME</option>
+                            <option value="FEMME">FEMME</option>
+                            <option value="TOUS">TOUS</option>
+                        </select>
+                    </div>
+
+                    <div style="height: 15px;"></div>
+
+
+                    <label for="Description" style="color: #aaaaaa; font-size: 12px;">
+                        Description complete du travail
+                    </label>
+                    <textarea id="Description"
+                        style="width: 100%; background-color: #ffffff; border-radius: 7px; padding: 0 2%;">
+                    </textarea>
+
+                    <div style="height: 15px;"></div>
+                    <a id="loadingb" class="btn btn-primary" onclick="CreateJob()" style="cursor: pointer;">
+                        Submet
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <div class="section full-height" id="job_open_view">
+        <div class="modala_job_open_view">
+            <div class="modala_wrapa_job_open_view">
+                <a onclick="closeJobViewa()"
+                    style="cursor: pointer; padding: 10px; color: #ff0000; background-color: #eeeeee; border-radius: 50%; font-weight: bold;">X</a>
+                <div style="background: #eeeeee; height: 100%; width: 100%; padding: 3%;" id="">
+
+                    <div class="check_boxa">
+                        <label for="role_job" style="color: #aaaaaa; font-size: 12px;">Role</label>
+                        <p id="role_job">Nounou</p>
+                    </div>
+                    <div style="height: 15px;"></div>
+
+                    <div class="">
+                        <p>Jour de travail</p>
+
+                        <div style="width: 100%; display: flex; flex-wrap: wrap;" id="jour_de_travail">
+                            <div class="check_boxa">
+                                <label for="Lundi" style="color: #aaaaaa; font-size: 12px;">Lundi</label>
+                                <input type="checkbox" id="Lundi" autocomplete="off"
+                                    style="width: 35px; height: 1.2rem; background-color: #ffffff; padding-left: 2%; padding-right: 2%;">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="height: 15px;"></div>
+
+                    <div class="check_boxa">
+                        <label for="debute_job" style="color: #aaaaaa; font-size: 12px;">l'heure débute</label>
+                        <p id="debute_job">10:30</p>
+                    </div>
+
+                    <div style="height: 15px;"></div>
+
+                    <div class="check_boxa">
+                        <label for="descente_job" style="color: #aaaaaa; font-size: 12px;">l'heure descente</label>
+                        <p id="descente_job">20:30</p>
+                    </div>
+
+                    <div style="height: 15px;"></div>
+
+                    <div class="check_boxa">
+                        <label for="Ville_job" style="color: #aaaaaa; font-size: 12px;">Ville</label>
+                        <p id="Ville_job">Ville</p>
+                    </div>
+                    <div style="height: 15px;"></div>
+
+                    <div class="check_boxa">
+                        <label for="Commune_job" style="color: #aaaaaa; font-size: 12px;">Commune</label>
+                        <p id="Commune_job">Commune</p>
+                    </div>
+
+                    <div style="height: 15px;"></div>
+
+                    <div class="check_boxa">
+                        <label for="Salaire_job" style="color: #aaaaaa; font-size: 12px;">Salaire</label>
+                        <p id="Salaire_job">75000 F.CFA</p>
+                    </div>
+
+                    <div style="height: 15px;"></div>
+
+                    <div class="check_boxa">
+                        <label for="Age-range" style="color: #aaaaaa; font-size: 12px;">
+                            Plage d'Age
+                        </label>
+                        <p id="Age-range">18-25</p>
+                    </div>
+
+                    <div style="height: 15px;"></div>
+
+                    <div class="check_boxa">
+                        <label for="Celibataire_job" style="color: #aaaaaa; font-size: 12px;">
+                            Une personne marié ou?
+                        </label>
+                        <p id="Celibataire_job">Célibataire</p>
+                    </div>
+
+                    <div style="height: 15px;"></div>
+
+                    <div class="check_boxa">
+                        <label for="sex-range" style="color: #aaaaaa; font-size: 12px;">
+                            SEX DE PREFERENCE
+                        </label>
+                        <p id="sex-range">Femme</p>
+                    </div>
+
+                    <div style="height: 15px;"></div>
+
+                    <div class="check_boxa">
+                        <label for="Description-range" style="color: #aaaaaa; font-size: 12px;">
+                            Description complete du travail
+                        </label>
+                        <p id="Description-range">Blablabla !</p>
+                    </div>
+
+                    <div style="height: 15px;"></div>
+
+                    <a id="loadingc" class="btn btn-primary" style="cursor: pointer;">
+                        Comfirmer
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- @@@@@@@@@@@@@@ Recrutement form ends @@@@@@@@@@@@@@ -->
+    <!-- @@@@@@@@@@@@@@ Recrutement form ends @@@@@@@@@@@@@@ -->
+    <!-- @@@@@@@@@@@@@@ Recrutement form ends @@@@@@@@@@@@@@ -->
+    <!-- @@@@@@@@@@@@@@ Recrutement form ends @@@@@@@@@@@@@@ -->
+    <!-- @@@@@@@@@@@@@@ Recrutement form ends @@@@@@@@@@@@@@ -->
+    <!-- @@@@@@@@@@@@@@ Recrutement form ends @@@@@@@@@@@@@@ -->
+    <!-- @@@@@@@@@@@@@@ Recrutement form ends @@@@@@@@@@@@@@ -->
+
+
+
+
+
+
+
+
+
+
+
+
     <script src="./index.js"></script>
     <script src="servicesfunctions/convertisseur.js"> </script>
     <script src="servicesfunctions/database_handl.js"> </script>
@@ -1108,6 +1591,8 @@
     <script src="servicesfunctions/initial.js"> </script>
     <script src="servicesfunctions/userlister.js"> </script>
     <script src="servicesfunctions/profile.js"> </script>
+    <script src="servicesfunctions/login.js"> </script>
+    <script src="servicesfunctions/veiwdetail.js"> </script>
 </body>
 
 </html>

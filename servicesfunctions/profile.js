@@ -1,12 +1,75 @@
 let comment_fetched = [];
 async function getProfile(user_id) {
-    if (user_id) {
-        const sesStoge = await GetCandidatByID(user_id);
-        const username = whatisthis(sesStoge.name);
+    const connected_true = sessionStorage.getItem('_id');
+    document.getElementById('Deverrouillage_id').setAttribute("onclick", `Deverrouillage('${user_id}')`);
+    document.getElementById('unlock').classList = "fa fa-eye-slash";
+    document.getElementById('user_profile_detail').style.display = "none";
+
+    if (user_id && connected_true) {
+        let sesStoge = await GetCandidatByID(user_id);
+        if (!sesStoge) {
+            sesStoge = await GetPersonByID(user_id);
+        }
+        const username = sesStoge.name;
         const userrole = whatisthis(sesStoge.role);
-        const userbio = whatisthis(sesStoge.bio);
         const userstatus = sesStoge.status;
         const userphoto = sesStoge.image;
+        closeStoryModala()
+
+
+
+        if (userphoto.length > 0) {
+            document.getElementById(`profile_ima_tag`).src = userphoto[0].ima == null ? "assets/imo/baby1.webp" : userphoto[0].ima;
+            document.getElementById(`comment_ima_tag`).src = userphoto[0].ima == null ? "assets/imo/baby1.webp" : userphoto[0].ima;
+
+        } else {
+            document.getElementById(`profile_ima_tag`).src = "assets/imo/baby1.webp";
+            document.getElementById(`comment_ima_tag`).src = "assets/imo/baby1.webp"
+
+        }
+
+
+        if (userphoto.length > 1) {
+            document.getElementById(`cover_ima_tag`).src = userphoto[1].ima == null ? "assets/imo/baby1.webp" : userphoto[1].ima;
+        } else {
+            document.getElementById(`cover_ima_tag`).src = "assets/imo/baby1.webp"
+        }
+
+
+        document.getElementById('desc_tag').innerText = "";
+
+        document.getElementById('name_tag').innerText = username;
+        document.getElementById('status_tag').innerHTML = `
+                    @${userrole}
+                    <img style="height: 15px; width: 15px; margin-top: 2px;" src="assets/imo/${userstatus ? userrole === "Owner" ? 'verify.png' : 'verified.png' : userrole === "Owner" ? 'verify.png' : 'bad_verify.png'}" alt="">
+                `;
+
+
+        comment_fetched = await requesttoBackend('GET', `gettingbycopinecomment/${user_id}`);
+        document.getElementById('comennt_tag').innerText = `${comment_fetched.length}`;
+        document.getElementById('profile_data_goes_here').style.display = "block";
+
+    } else {
+        alert("Vous devez avoir un compte, pour voir ses détails")
+    }
+};
+
+async function getProfilea(user_id) {
+    const connected_true = sessionStorage.getItem('_id');
+    document.getElementById('Deverrouillage_id').setAttribute("onclick", `Deverrouillage('${user_id}')`);
+    document.getElementById('unlock').classList = "fa fa-eye-slash";
+    document.getElementById('user_profile_detail').style.display = "none";
+
+    if (user_id && connected_true === user_id) {
+        let sesStoge = await GetCandidatByID(user_id);
+        if (!sesStoge) {
+            sesStoge = await GetPersonByID(user_id);
+        }
+        const username = sesStoge.name;
+        const userrole = whatisthis(sesStoge.role);
+        const userstatus = sesStoge.status;
+        const userphoto = sesStoge.image;
+        closeStoryModala()
 
 
 
@@ -35,19 +98,16 @@ async function getProfile(user_id) {
                     <img style="height: 15px; width: 15px; margin-top: 2px;" src="assets/imo/${userstatus ? userrole === "Owner" ? 'verify.png' : 'verified.png' : userrole === "Owner" ? 'verify.png' : 'bad_verify.png'}" alt="">
                 `;
 
-        document.getElementById('desc_tag').innerText = userbio;
+        document.getElementById('desc_tag').innerText = "";
 
         comment_fetched = await requesttoBackend('GET', `gettingbycopinecomment/${user_id}`);
         document.getElementById('comennt_tag').innerText = `${comment_fetched.length}`;
         document.getElementById('profile_data_goes_here').style.display = "block";
-        closeStoryModala()
 
     } else {
-
+        alert("Vous devez avoir un compte, pour voir ses détails")
     }
 };
-
-
 
 
 
@@ -337,3 +397,4 @@ function ShowReplyInput(params) {
     document.getElementById(`${params}rep`).classList.remove("displo-profil_view");
     document.getElementById(`${params}rep`).style.display = "block";
 }
+

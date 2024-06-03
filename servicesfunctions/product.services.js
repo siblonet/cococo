@@ -80,6 +80,67 @@ async function PostSingleCandidate(person) {
 }
 
 
+
+async function PostJob(jobs) {
+    const jobdb = await openJobDatabase();
+    const JpTransation = jobdb.transaction(["jobContent"], "readwrite");
+    const JpStore = JpTransation.objectStore("jobContent");
+
+    let added = false;
+    jobs.map(job => {
+        const adding = JpStore.add(job);
+
+        adding.onsuccess = () => {
+            added = true;
+        };
+
+        adding.onerror = (event) => {
+            console.log("PostJob", event.target.error);
+        };
+
+    });
+
+    return added
+}
+
+
+async function PostSingleJob(job) {
+    return new Promise((resolve, reject) => {
+        openJobDatabase().then(jobdb => {
+            const JpTransaction = jobdb.transaction(["jobContent"], "readwrite");
+            const JpStore = JpTransaction.objectStore("jobContent");
+
+            const adding = JpStore.add(job);
+
+            adding.onsuccess = () => {
+                resolve(true);
+            };
+
+            adding.onerror = (event) => {
+                console.error("Error adding object to PostSingleJob store:", event.target.error);
+                reject(event.target.error);
+            };
+
+            JpTransaction.oncomplete = () => {
+                console.log("Transaction completed: database modification finished.");
+            };
+
+            JpTransaction.onerror = (event) => {
+                console.error("Transaction error:", event.target.error);
+                reject(event.target.error);
+            };
+
+            JpTransaction.onabort = (event) => {
+                console.error("Transaction aborted:", event.target.error);
+                reject(event.target.error);
+            };
+        }).catch(error => {
+            console.error("Error opening database:", error);
+            reject(error);
+        });
+    });
+}
+
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ adding systme as post end @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ adding systme as post end @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ adding systme as post end @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
@@ -161,6 +222,53 @@ async function GetAllCandidat() {
 }
 
 
+
+
+async function GetJobByID(id) {
+    return new Promise(async (resolve, reject) => {
+        const jobdb = await openJobDatabase();
+        const GJTransation = jobdb.transaction(["jobContent"], "readonly");
+        const GJStore = GJTransation.objectStore("jobContent");
+
+        const requestingByID = GJStore.get(id);
+
+        requestingByID.onsuccess = (event) => {
+            const jobda = event.target.result;
+            resolve(jobda);
+        };
+
+        requestingByID.onerror = (event) => {
+            console.error("Error accessing object GetJobByID store:", event.target.error);
+            reject(event.target.error);
+        };
+    })
+
+}
+
+async function GetAllJob() {
+    const jobdb = await openJobDatabase();
+    const GJTransation = jobdb.transaction(["jobContent"], "readonly");
+    const GJStore = GJTransation.objectStore("jobContent");
+    return new Promise((resolve, reject) => {
+        const jobs = [];
+
+        GJStore.openCursor().onsuccess = (event) => {
+            const cursor = event.target.result;
+            if (cursor) {
+                jobs.push(cursor.value);
+                cursor.continue();
+            } else {
+                resolve(jobs);
+            }
+        };
+
+        GJTransation.onerror = (event) => {
+            console.log("GetAllJob error: " + event.target.errorCode);
+            reject([]);
+        };
+    });
+
+}
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ getting systme as get end @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
 
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ putting started @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */
@@ -228,4 +336,22 @@ async function deleteCandidat() {
     return deleted
 }
 
+async function deleteJob() {
+    const jobdb = await openJobDatabase();
+    const CJTransation = jobdb.transaction(["jobContent"], "readwrite");
+    const CJStore = CJTransation.objectStore("jobContent");
+
+    const clearJob = CJStore.clear();
+
+    let deleted = false;
+    clearJob.onsuccess = () => {
+        deleted = true;
+    };
+
+    clearJob.onerror = (event) => {
+        console.error("Error accessing object deleteJob store:", event.target.error);
+    };
+
+    return deleted
+}
 /* @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ deleting systme as delete end @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ */

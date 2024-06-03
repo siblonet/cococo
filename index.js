@@ -35,6 +35,13 @@ let timerId;
 let timerIa;
 let timerIb;
 
+const modala_compte = document.querySelector('.modala_compte');
+const modala_wrapa_compte = document.querySelector('.modala-wrapa_compte');
+
+const modala_recrutement_form = document.querySelector('.modala_recrutement_form');
+const modala_wrapa_recrutement_form = document.querySelector('.modala_wrapa_recrutement_form');
+
+
 // ============== SIDEBAR ============== 
 
 // Remove active class from all menu items
@@ -127,6 +134,7 @@ const closeStoryModala = () => {
     modala_wrap.style.opacity = '0';
     modala_wrap.style.transform = 'scale(0.6)';
     modala_wrap.style.transition = 'opacity 250ms 250ms ease, transform 300ms 250ms ease';
+    modala.style.zIndex = '-50';
 
 }
 
@@ -152,10 +160,149 @@ const closeStoryModal = (e) => {
         modala_wrap.style.opacity = '0';
         modala_wrap.style.transform = 'scale(0.6)';
         modala_wrap.style.transition = 'opacity 250ms 250ms ease, transform 300ms 250ms ease';
+        modala.style.zIndex = '-50';
+
     }
 }
 
 modala.addEventListener('click', closeStoryModal);
+
+
+
+
+
+
+const closeAccountModal = (e) => {
+    if (e.target.classList.contains('modala_compte')) {
+        try {
+            document.getElementById('phone').value = "";
+            document.getElementById('user-name').value = "";
+        } catch (error) {
+
+        }
+
+        try {
+            document.getElementById('pre-password').value = "";
+            document.getElementById('phonea').value = "";
+        } catch (error) {
+
+        }
+
+
+        const aoount_view_contaner = document.getElementById('aoount_view_contaner');
+        aoount_view_contaner.innerHTML = `
+            <div style="display: flex; width: 100%; flex-wrap: wrap; justify-content: space-between;">
+                <a class="btn btn-primary" onclick="AccountView('connect')" style="cursor: pointer;">
+                    Connexion
+                </a>
+
+                <a class="btn btn-primary" onclick="AccountView('create')" style="cursor: pointer;">
+                    Créer Compte
+                </a>
+            </div>
+        `;
+
+        modala_compte.style.pointerEvents = 'none';
+        modala_compte.style.opacity = '0';
+        modala_compte.style.transition = 'opacity 250ms 700ms ease';
+
+        modala_wrapa_compte.style.pointerEvents = 'auto';
+        modala_wrapa_compte.style.opacity = '0';
+        modala_wrapa_compte.style.transform = 'scale(0.6)';
+        modala_wrapa_compte.style.transition = 'opacity 250ms 250ms ease, transform 300ms 250ms ease';
+        modala_compte.style.zIndex = '-50';
+
+    }
+}
+modala_compte.addEventListener('click', closeAccountModal);
+
+const closeAccountModala = () => {
+    try {
+        document.getElementById('phone').value = "";
+        document.getElementById('user-name').value = "";
+    } catch (error) {
+
+    }
+
+    try {
+        document.getElementById('pre-password').value = "";
+        document.getElementById('phonea').value = "";
+    } catch (error) {
+
+    }
+
+
+    const aoount_view_contaner = document.getElementById('aoount_view_contaner');
+    aoount_view_contaner.innerHTML = `
+            <div style="display: flex; width: 100%; flex-wrap: wrap; justify-content: space-between;">
+                <a class="btn btn-primary" onclick="AccountView('connect')" style="cursor: pointer;">
+                    Connexion
+                </a>
+
+                <a class="btn btn-primary" onclick="AccountView('create')" style="cursor: pointer;">
+                    Créer Compte
+                </a>
+            </div>
+        `;
+
+    modala_compte.style.pointerEvents = 'none';
+    modala_compte.style.opacity = '0';
+    modala_compte.style.transition = 'opacity 250ms 700ms ease';
+
+    modala_wrapa_compte.style.pointerEvents = 'auto';
+    modala_wrapa_compte.style.opacity = '0';
+    modala_wrapa_compte.style.transform = 'scale(0.6)';
+    modala_wrapa_compte.style.transition = 'opacity 250ms 250ms ease, transform 300ms 250ms ease';
+    modala_compte.style.zIndex = '-50';
+
+}
+
+
+
+
+
+const closeRecrutementForm = (e) => {
+    if (e.target.classList.contains('modala_recrutement_form')) {
+        try {
+            //document.getElementById('phone').value = "";
+        } catch (error) {
+
+        }
+
+       
+
+        modala_recrutement_form.style.pointerEvents = 'none';
+        modala_recrutement_form.style.opacity = '0';
+        modala_recrutement_form.style.transition = 'opacity 250ms 700ms ease';
+
+        modala_wrapa_recrutement_form.style.pointerEvents = 'auto';
+        modala_wrapa_recrutement_form.style.opacity = '0';
+        modala_wrapa_recrutement_form.style.transform = 'scale(0.6)';
+        modala_wrapa_recrutement_form.style.transition = 'opacity 250ms 250ms ease, transform 300ms 250ms ease';
+        modala_recrutement_form.style.zIndex = '-50';
+
+    }
+}
+modala_recrutement_form.addEventListener('click', closeRecrutementForm);
+
+const closeRecrutementForma = () => {
+    try {
+        //document.getElementById('phone').value = "";
+    } catch (error) {
+
+    }
+
+    modala_recrutement_form.style.pointerEvents = 'none';
+    modala_recrutement_form.style.opacity = '0';
+    modala_recrutement_form.style.transition = 'opacity 250ms 700ms ease';
+
+    modala_wrapa_recrutement_form.style.pointerEvents = 'auto';
+    modala_wrapa_recrutement_form.style.opacity = '0';
+    modala_wrapa_recrutement_form.style.transform = 'scale(0.6)';
+    modala_wrapa_recrutement_form.style.transition = 'opacity 250ms 250ms ease, transform 300ms 250ms ease';
+    modala_recrutement_form.style.zIndex = '-50';
+
+}
 // ============== FONT SIZE ============== 
 
 // remove active class from spans or font size selectors

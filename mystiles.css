@@ -188,7 +188,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 100;
+    z-index: -50;
     overflow-x: hidden;
     background-color: rgba(31, 32, 41, .75);
     pointer-events: none;
@@ -198,6 +198,9 @@
 }
 
 
+#user_profile_detail {
+    display: none;
+}
 
 .modala-wrapa {
     position: relative;
@@ -267,6 +270,107 @@
         padding-bottom: 15px;
     }
 
+    .modala-wrapa_compte {
+        width: calc(100% - 40px);
+        padding-bottom: 15px;
+    }
+
+    .modala_wrapa_recrutement_form {
+        width: calc(100% - 40px);
+        padding-bottom: 15px;
+    }
+}
+
+
+.modala_compte {
+    position: fixed;
+    display: block;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -ms-flex-pack: center;
+    justify-content: center;
+    margin: 0 auto;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -50;
+    overflow-x: hidden;
+    background-color: rgba(31, 32, 41, .75);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 250ms 700ms ease;
+    cursor: pointer;
+}
+
+.modala-wrapa_compte {
+    position: relative;
+    display: block;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    overflow: hidden;
+    -ms-flex-item-align: center;
+    align-self: center;
+    opacity: 0;
+    transform: scale(0.6);
+    transition: opacity 250ms 250ms ease, transform 300ms 250ms ease;
+}
+
+.check_boxa {
+    background: #ffffff;
+    border-radius: 5px;
+    padding: 5px;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    margin: 2px;
+}
+
+.modala_recrutement_form {
+    position: fixed;
+    display: block;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -ms-flex-pack: center;
+    justify-content: center;
+    margin: 0 auto;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -50;
+    overflow-x: hidden;
+    background-color: rgba(31, 32, 41, .75);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 250ms 700ms ease;
+    cursor: pointer;
+}
+
+.modala_wrapa_recrutement_form {
+    position: relative;
+    display: block;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    overflow: hidden;
+    -ms-flex-item-align: center;
+    align-self: center;
+    opacity: 0;
+    transform: scale(0.6);
+    transition: opacity 250ms 250ms ease, transform 300ms 250ms ease;
 }
 
 /* @@@@@@@@@@@@@@ story shows end @@@@@@@@@@@@@@ */

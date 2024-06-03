@@ -45,7 +45,7 @@ selectsex.addEventListener('change', function () {
 
 
 
-async function SignUp() {
+async function User_Updating() {
     const full_name = thisiswhat(document.getElementById('name').value);
     const email = thisiswhat(document.getElementById('email').value);
     const phone = thisiswhat(document.getElementById('phone').value);
@@ -118,3 +118,5 @@ async function SignUp() {
         alert("Renseignez tous.");
     }
 };
+
+
