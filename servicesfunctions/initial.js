@@ -86,8 +86,8 @@ async function getInitial() {
         if (jobs_dro.length > 0) {
             DisplayInitJobs(jobs_dro)
         } else {
+            //665ce006500a210e6975e91d
             const job_content = await requesttoBackend('GET', `Job/Creating/copine/${user_id}`);
-            //console.log(user_content);
             if (job_content.length > 0) {
                 await deleteJob();
                 await PostJob(job_content);

@@ -189,6 +189,7 @@ async function CreateJob() {
     const selectedDays = `${Lundi ? 'Lundi ' : ''}${Mardi ? 'Mardi ' : ''}${Mercredi ? 'Mercredi ' : ''}${Jeudi ? 'Jeudi ' : ''}${Vendredi ? 'Vendredi ' : ''}${Samedi ? 'Samedi ' : ''}${sevent_d ? '7/7 ' : ''}${Dimanche ? "Dimanche" : ''}`;
 
 
+    const connected_id = sessionStorage.getItem('_id');
 
     const heur_debute = document.getElementById('heur_debute').value;
     const heur_descente = document.getElementById('heur_descente').value;
@@ -202,7 +203,7 @@ async function CreateJob() {
     const loadingb = document.getElementById('loadingb');
 
 
-    if (selecrole && selectedDays && heur_debute && heur_descente && Ville && Commune && Salaire && Description && age && sex_choi && matrimonial) {
+    if (connected_id && selecrole && selectedDays && heur_debute && heur_descente && Ville && Commune && Salaire && Description && age && sex_choi && matrimonial) {
         loadingb.removeAttribute("onclick");
         loadingb.innerHTML = `En Cours ...`;
 
@@ -217,6 +218,7 @@ async function CreateJob() {
             descip: Description,
             matrimonial: matrimonial,
             age: age,
+            recruter: connected_id
         };
 
         const response = await requesttoBackend('POST', 'JobcopineCreating', data);
