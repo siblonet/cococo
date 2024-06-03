@@ -154,7 +154,7 @@ async function SignUp() {
 
 
 
-function ProfileDataSet(dato) {
+async function ProfileDataSet(dato) {
     const connected_u = document.getElementById('connected_u')
     const show_profile = document.getElementById('show_profile')
     show_profile.setAttribute("onclick", `getProfile('${dato._id}')`);
@@ -173,5 +173,11 @@ function ProfileDataSet(dato) {
     if (dato.role === "iVXIFGVFI") {
         document.getElementById('travail_demand').innerText = "Vos Récrutements";
     }
+
+    const job_content = await requesttoBackend('GET', `Job/Creating/copine/${dato._id}`);
+    //console.log(user_content);
+    await deleteJob();
+    await PostJob(job_content);
+    DisplayInitJobs(job_content);
     closeAccountModala()
 };
