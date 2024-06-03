@@ -227,7 +227,7 @@ async function CreateJob() {
             loadingb.setAttribute("onclick", "CreateJob()");
             loadingb.innerText = "Submet";
         } else if (response.role) {
-            await PostJob(response);
+            await PostSingleJob(response);
             loadingb.setAttribute("onclick", "CreateJob()");
             loadingb.innerText = "Submet";
             DisplayJobs()
@@ -282,6 +282,11 @@ const OpenJob = async (job_id) => {
     modala_wrapa_job_open_view.style.transform = 'scale(1)';
     modala_wrapa_job_open_view.style.transition = 'opacity 250ms 500ms ease, transform 350ms 500ms ease';
 }
+
+const OpenModifieJob = async (job_id) => {
+
+}
+
 
 const AcceptJob = async (job_id) => {
 

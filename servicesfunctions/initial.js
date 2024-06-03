@@ -1,3 +1,61 @@
+const DisplayInitJobs = async (job_content) => {
+    const connected_id = sessionStorage.getItem('_id');
+
+
+    const job_display = document.getElementById('job_display');
+    job_display.innerHTML = "";
+    const job_peop = 1;
+
+    job_content.forEach((job, index) => {
+        const job_html = `
+
+                      <div class="request">
+                            <div class="info">
+                                <div class="profile-photo">
+                                    <img src="./assets/imo/job.png">
+                                </div>
+
+                                <div>
+                                    <h5>${job.role}</h5>
+                                    <p class="text-muted">${job_peop} persone(s) invité</p>
+                                </div>
+                            </div>
+                            ${connected_id === job.recruter ?
+                `
+                                <div class="action">
+                                    <button class="btn btn-primary" onclick="OpenModifieJob('${job._id}')">
+                                        Modifier
+                                    </button>
+                                    <button class="btn"  onclick="DeleteJob(${job._id})">
+                                        Annuler
+                                    </button>
+                                </div>
+
+                            `
+                :
+                `
+                                <div class="action">
+                                    <button class="btn btn-primary" onclick="OpenJob('${job._id}')">
+                                        Accepter
+                                    </button>
+                                    <button class="btn" onclick="RejectJob(${job._id})">
+                                        Refuser
+                                    </button>
+                                </div>
+
+                            `
+            }
+                            
+                        </div>
+                        `;
+
+        job_display.innerHTML += job_html;
+
+    });
+}
+
+
+
 async function getInitial() {
     //sessionStorage.clear();
     const connected_u = document.getElementById('connected_u')
@@ -21,7 +79,19 @@ async function getInitial() {
         if (dato.role === "iVXIFGVFI") {
             document.getElementById('travail_demand').innerText = "Vos Récrutements";
         }
-        
+
+        const jobs_dro = await GetAllJob();
+
+        const job_display = document.getElementById('job_display');
+        if (jobs_dro.length > 0) {
+            DisplayInitJobs(jobs_dro)
+        } else {
+            job_display.innerHTML = `
+            <p>Pas d'offre</p>
+          `;
+        }
+
+
     } else {
         await deletePeople();
         const dato = await requesttoBackend('GET', `team/show/giveaccess/Owner`);
