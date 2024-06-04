@@ -227,6 +227,8 @@ const Deverrouillage = async (user_id) => {
         if (!sesStoge) {
             sesStoge = await GetPersonByID(user_id);
         }
+        document.getElementById('Assigner_button').setAttribute("onclick", `AssignerJob('${user_id}')`);
+
         const username = whatisthis(sesStoge.name);
         const userphone = whatisthis(sesStoge.phone);
         const useremail = whatisthis(sesStoge.email);

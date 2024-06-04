@@ -218,6 +218,7 @@ async function CreateJob() {
             descip: Description,
             matrimonial: matrimonial,
             age: age,
+            sex: sex_choi,
             recruter: connected_id
         };
 
@@ -295,9 +296,9 @@ const AcceptJob = async (job_id) => {
 }
 
 const RejectJob = async (job_id) => {
-
+ 
 }
-
+ 
 const DisplayJobs = async () => {
     const job_content = await GetAllJob();
     const connected_id = sessionStorage.getItem('_id');
@@ -356,3 +357,21 @@ const DisplayJobs = async () => {
 }
 
 
+const AssignerJob = async (user_id) => {
+    document.getElementById('Assigner_button').removeAttribute("onclick");
+    const job_content = await GetAllJob();
+
+    const data = {
+        jobid: job_content[0]._id,
+        assignedid: user_id
+    };
+
+    const response = await requesttoBackend('POST', 'AssigneJob', data);
+    if (!response) {
+        alert("Échec, vérifiez votre connexion ou essayez plus tard.");
+    } else{
+        getProfile(user_id)
+    }
+
+
+}

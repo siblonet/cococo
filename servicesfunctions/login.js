@@ -155,6 +155,7 @@ async function SignUp() {
 
 
 async function ProfileDataSet(dato) {
+    const connected_creat = document.getElementById('connected_creat');
     const connected_u = document.getElementById('connected_u')
     const show_profile = document.getElementById('show_profile')
     show_profile.setAttribute("onclick", `getProfile('${dato._id}')`);
@@ -179,5 +180,7 @@ async function ProfileDataSet(dato) {
     await deleteJob();
     await PostJob(job_content);
     DisplayInitJobs(job_content);
+    connected_creat.style.display = "block";
+
     closeAccountModala()
 };

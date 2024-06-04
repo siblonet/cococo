@@ -238,7 +238,8 @@
                     </a>
                 </div>
                 <!----------------- END OF SIDEBAR ------------------ -->
-                <a class="btn btn-primary" style="cursor: pointer;" onclick="openRecrutementForm()">Récruter</a>
+                    <a  id="connected_creat" class="btn btn-primary" style="cursor: pointer; display: none;" onclick="openRecrutementForm()">Récruter</a>
+
 
             </div>
 
@@ -487,8 +488,7 @@
 
                                     <div class="follow-profil_view"
                                         style="width: 100%; justify-content: center; text-align: center; align-items: center;">
-                                        <button id="Assigner_button" style="cursor: pointer;" type="button"
-                                            onclick="Deverrouillage()">
+                                        <button id="Assigner_button" style="cursor: pointer;" type="button">
                                             <i id="Assigner_loading" class="fa fa-handshake"
                                                 style="color: #aaaaaa;"></i>
                                         </button>
@@ -1465,17 +1465,18 @@
                     style="cursor: pointer; padding: 10px; color: #ff0000; background-color: #eeeeee; border-radius: 50%; font-weight: bold;">X</a>
                 <div style="background: #eeeeee; height: 100%; width: 100%; padding: 3%;" id="">
 
-                    <div class="check_boxa">
+                    <div class="check_boxa" style="justify-content: space-between;">
                         <label for="role_job" style="color: #aaaaaa; font-size: 12px;">Role</label>
                         <p id="role_job">Nounou</p>
                     </div>
+
                     <div style="height: 15px;"></div>
 
                     <div class="">
                         <p>Jour de travail</p>
 
                         <div style="width: 100%; display: flex; flex-wrap: wrap;" id="jour_de_travail">
-                            <div class="check_boxa">
+                            <div class="check_boxa" style="justify-content: space-between;">
                                 <label for="Lundi" style="color: #aaaaaa; font-size: 12px;">Lundi</label>
                                 <input type="checkbox" id="Lundi" autocomplete="off"
                                     style="width: 35px; height: 1.2rem; background-color: #ffffff; padding-left: 2%; padding-right: 2%;">
@@ -1485,41 +1486,41 @@
 
                     <div style="height: 15px;"></div>
 
-                    <div class="check_boxa">
+                    <div class="check_boxa" style="justify-content: space-between;">
                         <label for="debute_job" style="color: #aaaaaa; font-size: 12px;">l'heure débute</label>
                         <p id="debute_job">10:30</p>
                     </div>
 
                     <div style="height: 15px;"></div>
 
-                    <div class="check_boxa">
+                    <div class="check_boxa" style="justify-content: space-between;">
                         <label for="descente_job" style="color: #aaaaaa; font-size: 12px;">l'heure descente</label>
                         <p id="descente_job">20:30</p>
                     </div>
 
                     <div style="height: 15px;"></div>
 
-                    <div class="check_boxa">
+                    <div class="check_boxa" style="justify-content: space-between;">
                         <label for="Ville_job" style="color: #aaaaaa; font-size: 12px;">Ville</label>
                         <p id="Ville_job">Ville</p>
                     </div>
                     <div style="height: 15px;"></div>
 
-                    <div class="check_boxa">
+                    <div class="check_boxa" style="justify-content: space-between;">
                         <label for="Commune_job" style="color: #aaaaaa; font-size: 12px;">Commune</label>
                         <p id="Commune_job">Commune</p>
                     </div>
 
                     <div style="height: 15px;"></div>
 
-                    <div class="check_boxa">
+                    <div class="check_boxa" style="justify-content: space-between;">
                         <label for="Salaire_job" style="color: #aaaaaa; font-size: 12px;">Salaire</label>
                         <p id="Salaire_job">75000 F.CFA</p>
                     </div>
 
                     <div style="height: 15px;"></div>
 
-                    <div class="check_boxa">
+                    <div class="check_boxa" style="justify-content: space-between;">
                         <label for="Age-range" style="color: #aaaaaa; font-size: 12px;">
                             Plage d'Age
                         </label>
@@ -1528,7 +1529,7 @@
 
                     <div style="height: 15px;"></div>
 
-                    <div class="check_boxa">
+                    <div class="check_boxa" style="justify-content: space-between;">
                         <label for="Celibataire_job" style="color: #aaaaaa; font-size: 12px;">
                             Une personne marié ou?
                         </label>
@@ -1537,7 +1538,7 @@
 
                     <div style="height: 15px;"></div>
 
-                    <div class="check_boxa">
+                    <div class="check_boxa" style="justify-content: space-between;">
                         <label for="sex-range" style="color: #aaaaaa; font-size: 12px;">
                             SEX DE PREFERENCE
                         </label>
@@ -1546,9 +1547,9 @@
 
                     <div style="height: 15px;"></div>
 
-                    <div class="check_boxa">
+                    <div class="check_boxa" style="justify-content: space-between;">
                         <label for="Description-range" style="color: #aaaaaa; font-size: 12px;">
-                            Description complete du travail
+                            Détail:
                         </label>
                         <p id="Description-range">Blablabla !</p>
                     </div>

@@ -61,6 +61,9 @@ async function getInitial() {
     const connected_u = document.getElementById('connected_u')
     const show_profile = document.getElementById('show_profile')
     const user_id = sessionStorage.getItem('_id');
+    const job_display = document.getElementById('job_display');
+    const connected_creat = document.getElementById('connected_creat');
+
     if (user_id) {
         const dato = await GetPersonByID(user_id);
         connected_u.innerHTML = `
@@ -79,30 +82,51 @@ async function getInitial() {
         if (dato.role === "iVXIFGVFI") {
             document.getElementById('travail_demand').innerText = "Vos Récrutements";
         }
+        //await deleteJob();
 
         const jobs_dro = await GetAllJob();
 
-        const job_display = document.getElementById('job_display');
         if (jobs_dro.length > 0) {
             DisplayInitJobs(jobs_dro)
         } else {
-            //665ce006500a210e6975e91d
-            const job_content = await requesttoBackend('GET', `Job/Creating/copine/${user_id}`);
-            if (job_content.length > 0) {
-                await deleteJob();
-                await PostJob(job_content);
-                DisplayInitJobs(job_content);
+            if (dato.role === "iVXIFGVFI") {
+                const job_content = await requesttoBackend('GET', `Job/Creating/copine/${user_id}`);
+                if (job_content.length > 0) {
+                    await deleteJob();
+                    await PostJob(job_content);
+                    DisplayInitJobs(job_content);
+                } else {
+                    job_display.innerHTML = `
+                            <p>Pas d'offre</p>
+                        `;
+                }
             } else {
-                job_display.innerHTML = `
-                <p>Pas d'offre</p>
-              `;
+                const job_content = await requesttoBackend('GET', `Assigne/tome/job/${user_id}`);
+                await deleteJob();
+
+                if (job_content.length > 0) {
+                    await PostSingleJob(job_content[0].jobid);
+                    /*job_content.forEach((di) => {
+                        (async () => await PostSingleJob(di.jobid))();
+                    })*/
+                    DisplayInitJobs(job_content);
+                } else {
+                    job_display.innerHTML = `
+                            <p>Pas d'offre</p>
+                        `;
+                }
             }
 
 
-        }
+        };
 
+        connected_creat.style.display = "block";
 
     } else {
+        connected_creat.style.display = "none";
+        job_display.innerHTML = `
+        <p>Pas d'offre</p>
+      `;
         await deletePeople();
         const dato = await requesttoBackend('GET', `team/show/giveaccess/Owner`);
         connected_u.innerHTML = `

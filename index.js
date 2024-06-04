@@ -41,6 +41,8 @@ const modala_wrapa_compte = document.querySelector('.modala-wrapa_compte');
 const modala_recrutement_form = document.querySelector('.modala_recrutement_form');
 const modala_wrapa_recrutement_form = document.querySelector('.modala_wrapa_recrutement_form');
 
+const modala_job_open_view = document.querySelector('.modala_job_open_view');
+const modala_wrapa_job_open_view = document.querySelector('.modala_wrapa_job_open_view');
 
 // ============== SIDEBAR ============== 
 
@@ -269,7 +271,7 @@ const closeRecrutementForm = (e) => {
 
         }
 
-       
+
 
         modala_recrutement_form.style.pointerEvents = 'none';
         modala_recrutement_form.style.opacity = '0';
@@ -303,6 +305,37 @@ const closeRecrutementForma = () => {
     modala_recrutement_form.style.zIndex = '-50';
 
 }
+
+
+
+// Closes Modal
+const closeJobViewa = () => {
+    modala_job_open_view.style.pointerEvents = 'none';
+    modala_job_open_view.style.opacity = '0';
+    modala_job_open_view.style.transition = 'opacity 250ms 700ms ease';
+    modala_wrapa_job_open_view.style.pointerEvents = 'auto';
+    modala_wrapa_job_open_view.style.opacity = '0';
+    modala_wrapa_job_open_view.style.transform = 'scale(0.6)';
+    modala_wrapa_job_open_view.style.transition = 'opacity 250ms 250ms ease, transform 300ms 250ms ease';
+    modala_job_open_view.style.zIndex = '-50';
+}
+
+// Closes Modal
+const closeJobView = (e) => {
+    if (e.target.classList.contains('modala_job_open_view')) {
+        modala_job_open_view.style.pointerEvents = 'none';
+        modala_job_open_view.style.opacity = '0';
+        modala_job_open_view.style.transition = 'opacity 250ms 700ms ease';
+
+        modala_wrapa_job_open_view.style.pointerEvents = 'auto';
+        modala_wrapa_job_open_view.style.opacity = '0';
+        modala_wrapa_job_open_view.style.transform = 'scale(0.6)';
+        modala_wrapa_job_open_view.style.transition = 'opacity 250ms 250ms ease, transform 300ms 250ms ease';
+        modala_job_open_view.style.zIndex = '-50';
+    }
+}
+
+modala_job_open_view.addEventListener('click', closeJobView);
 // ============== FONT SIZE ============== 
 
 // remove active class from spans or font size selectors
