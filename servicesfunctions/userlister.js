@@ -373,5 +373,4 @@ const AssignerJob = async (user_id) => {
         getProfile(user_id)
     }
 
-
 }

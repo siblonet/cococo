@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harold Faltermeyer - Axel F (1984) Beverly Hills Cop</title>
+    <link rel="icon" type="image/png" href="playlogo.png">
+    <link rel="stylesheet" href="playvidepo.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.6/css/unicons.css">
+</head>
+
+<body>
+    <audio id="music" preload="auto" loop="true" controls style="display: none;">
+        <source src="C:/Users/Pierres Vivantes/Downloads/HaroldFaltermeyer.mp3" type="audio/mp3">
+        <source src="C:/Users/Pierres Vivantes/Downloads/HaroldFaltermeyer.mp3" type="audio/ogg">
+    </audio>
+    <div class="media-controls">
+        <div class="media-buttons">
+            <button class="back-button media-button" label="back">
+                <i class="fas fa-step-backward button-icons"></i>
+                <span class="button-text milli">Back</span>
+            </button>
+
+            <button class="rewind-button media-button" label="rewind">
+                <i class="fas fa-backward button-icons"></i>
+                <span class="button-text milli">Rewind</span>
+            </button>
+
+            <button class="play-button media-button" label="play" onclick="PlayAudio()">
+                <i class="fas fa-play button-icons delta" id="playicon"></i>
+                <span class="button-text milli">Play</span>
+            </button>
+
+            <button class="fast-forward-button media-button" label="fast forward">
+                <i class="fas fa-forward button-icons"></i>
+                <span class="button-text milli">Forward</span>
+            </button>
+
+            <button class="skip-button media-button" label="skip">
+                <i class="fas fa-step-forward button-icons"></i>
+                <span class="button-text milli">Skip</span>
+            </button>
+        </div>
+        <div class="media-progress">
+            <div class="progress-bar-wrapper progress">
+                <div class="progress-bar" id="progress-bar" style="width: 0%;"></div>
+            </div>
+            <div class="progress-time-current milli" id="timers">0:00</div>
+            <div class="progress-time-total milli" id="duration-tag">0:00</div>
+        </div>
+    </div>
+
+    <script>
+        function PlayAudio() {
+            const player = document.getElementById("music");
+            const playIcon = document.getElementById("playicon");
+            const progressBar = document.getElementById("progress-bar");
+            const timer = document.getElementById("timers");
+            const durationTag = document.getElementById("duration-tag");
+
+            if (player.paused) {
+                player.play();
+                playIcon.classList.remove("fa-play");
+                playIcon.classList.add("fa-pause");
+            } else {
+                player.pause();
+                playIcon.classList.remove("fa-pause");
+                playIcon.classList.add("fa-play");
+            }
+
+            player.addEventListener("timeupdate", () => {
+                const currentTime = player.currentTime;
+                const duration = player.duration;
+
+                // Update the timer
+                const minutes = Math.floor(currentTime / 60);
+                const seconds = Math.floor(currentTime % 60);
+                timer.innerText = `${minutes}:${seconds < 10 ? '0' + seconds : seconds}`;
+
+                // Update the duration
+                const totalMinutes = Math.floor(duration / 60);
+                const totalSeconds = Math.floor(duration % 60);
+                durationTag.innerText = `${totalMinutes}:${totalSeconds < 10 ? '0' + totalSeconds : totalSeconds}`;
+
+                // Update the progress bar
+                const progressPercent = (currentTime / duration) * 100;
+                progressBar.style.width = `${progressPercent}%`;
+            });
+        }
+    </script>
+</body>
+
+</html>

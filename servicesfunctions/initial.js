@@ -130,7 +130,7 @@ async function getInitial() {
         await deletePeople();
         const dato = await requesttoBackend('GET', `team/show/giveaccess/Owner`);
         connected_u.innerHTML = `
-            <a class="btn btn-primary" onclick="openAccountModal()" style="cursor: pointer;">Créer Compte</a>
+            <a class="btn btn-primary" onclick="openAccountModal()" style="cursor: pointer;">Compte</a>
             <div class="profile-photo">
                 <img id="profile-photo" src="${dato[0].image[0] ? dato[0].image[0].ima : "assets/imo/avatay.png"}" alt="load">
             </div>

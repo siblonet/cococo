@@ -50,7 +50,8 @@ async function getProfile(user_id) {
         document.getElementById('profile_data_goes_here').style.display = "block";
 
     } else {
-        alert("Vous devez avoir un compte, pour voir ses détails")
+        alert("Vous devez avoir un compte, pour voir ses détails");
+        openAccountModal()
     }
 };
 
@@ -105,7 +106,9 @@ async function getProfilea(user_id) {
         document.getElementById('profile_data_goes_here').style.display = "block";
 
     } else {
-        alert("Vous devez avoir un compte, pour voir ses détails")
+        alert("Vous devez avoir un compte, pour voir ses détails");
+        openAccountModal()
+
     }
 };
 
